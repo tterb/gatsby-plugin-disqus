@@ -1,0 +1,43 @@
+{
+  "name": "gatsby-plugin-disqus",
+  "description": "A component for integrating Disqus comments in Gatsby.",
+  "version": "1.0.0",
+  "repository": "https://github.com/tterb/gatsby-plugin-disqus",
+  "homepage": "https://github.com/tterb/gatsby-plugin-disqus",
+  "bugs": {
+    "url": "https://github.com/tterb/gatsby-plugin-disqus/issues"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsbyjs",
+    "plugin",
+    "disqus",
+    "comments"
+  ],
+  "main": "index.js",
+  "author": "Brett Stevenson <bstevensondev@gmail.com> (https://brettstevenson.io)",
+  "license": "MIT",
+  "scripts": {
+    "release": "standard-version",
+    "copy-files": "mkdir lib || true && cp .eslintrc.json readme.md package.json lib",
+    "build": "yarn copy-files && babel src --out-dir lib --copy-files --ignore **/__tests__",
+    "watch": "yarn copy-files && babel -w src --out-dir lib --copy-files --ignore **/__tests__",
+    "npm-publish": "git push --follow-tags origin master && yarn build && cd lib && npm publish && cd ../"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "prop-types": "^15.6.2"
+  },
+  "dependencies": {
+    "babel-preset-gatsby-package": "^0.1.2",
+    "cross-env": "^5.2.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.5"
+  }
+}
