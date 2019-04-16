@@ -1,11 +1,15 @@
-# Gatsby Plugin Disqus
+# Gatsby Plugin Disqus  
+
+<p align="right">
+  <a href="https://npmjs.org/package/gatsby-plugin-disqus"><img src="http://img.shields.io/npm/v/gatsby-plugin-disqus.svg" alt="npm version" /></a>
+</p>
 
 A plugin that simplifies the process of integrating [Disqus](https://disqus.com/) comments within your [Gatsby](https://www.gatsbyjs.org/) website.
 
 ## Install
 `$ yarn add gatsby-plugin-disqus`  
 or  
-`$ npm install -s gatsby-plugin-disqus`  
+`$ npm install -S gatsby-plugin-disqus`  
 
 ## Configure
 
@@ -45,6 +49,8 @@ const PostTemplate = () => (
 
 export default PostTemplate
 ```
+
+While providing an `identifier`, `title`, and `url` are optional, it is recommended as it will ensure that threads won't be lost in the case that the post is renamed or the domain changes.
 
 ## How to contribute
 
