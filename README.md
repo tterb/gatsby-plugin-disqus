@@ -1,7 +1,7 @@
 # Gatsby Plugin Disqus  
 
 <p align="right">
-  <a href="https://npmjs.org/package/gatsby-plugin-disqus"><img src="http://img.shields.io/npm/v/gatsby-plugin-disqus.svg" alt="npm version" /></a>
+  <a href="https://npmjs.org/package/gatsby-plugin-disqus"><img src="https://img.shields.io/npm/v/gatsby-plugin-disqus.svg" alt="npm version" /></a>
 </p>
 
 A plugin that simplifies the process of integrating [Disqus](https://disqus.com/) comments within your [Gatsby](https://www.gatsbyjs.org/) website.
