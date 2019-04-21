@@ -3,7 +3,7 @@
 var didRunAlready = false;
 let shortname = ''
 
-exports.onPreInit = function (_ref, pluginOptions) {
+exports.onPreInit = function(_ref, pluginOptions) {
   
   // Gatsby adds a pluginOptions that's not needed for this plugin
   delete pluginOptions.plugins
