@@ -1,23 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import "./style.css";
 
 export default class Disqus extends React.Component {
   
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = props
     this.shortname = (typeof GATSBY_DISQUS_SHORTNAME !== `undefined` && GATSBY_DISQUS_SHORTNAME !== '') ? GATSBY_DISQUS_SHORTNAME : ''
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     this.setState(nextProps)
   }
 
-  componentWillMount () {
-    if (typeof window != 'undefined' && window.document) {
+  componentWillMount() {
+    if(typeof window != 'undefined' && window.document) {
       const component = this
-      window.disqus_config = function () {
+      window.disqus_config = function() {
         this.page.identifier = component.state.identifier
         this.page.title = component.state.title
         this.page.url = component.state.url
@@ -29,7 +30,7 @@ export default class Disqus extends React.Component {
     }
   }
 
-  render () {
+  render() {
     let props = this.props
     return (
       <div id="disqus_thread" {...props}></div>
