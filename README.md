@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/16360374/56634709-d11b0280-6617-11e9-8f33-d92638b14c1f.png" height="42"/> Gatsby Plugin Disqus  
+# <img src="https://user-images.githubusercontent.com/16360374/56634709-d11b0280-6617-11e9-8f33-d92638b14c1f.png" height="35"/> Gatsby Plugin Disqus  
 
 A plugin that simplifies the process of added [Disqus](https://disqus.com/) comments to [Gatsby](https://www.gatsbyjs.org/) websites.  
 
