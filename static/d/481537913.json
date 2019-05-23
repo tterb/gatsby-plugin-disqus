@@ -1,0 +1,1 @@
+{"data":{"contentfulSection":{"name":"Install","contents":{"childMarkdownRemark":{"rawMarkdownBody":"```bash\n$ yarn add gatsby-plugin-disqus\n```  \n\nor  \n\n```bash\n$ npm install -S gatsby-plugin-disqus\n```  \n"}}}}}
