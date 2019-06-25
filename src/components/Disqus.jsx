@@ -58,7 +58,6 @@ export default class Disqus extends React.Component {
   }
   
   cleanInstance() {
-    const doc = window.document
     removeScript('disqus-embed-script', window.document.body)
     if(window && window.DISQUS) {
       window.DISQUS.reset()
