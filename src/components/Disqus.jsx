@@ -8,6 +8,16 @@ export default class Disqus extends React.Component {
   constructor(props) {
     super(props)
     this.shortname = (typeof GATSBY_DISQUS_SHORTNAME !== `undefined` && GATSBY_DISQUS_SHORTNAME !== '') ? GATSBY_DISQUS_SHORTNAME : ''
+    if(props.config) {
+      this.config = props.config
+    } else {
+      this.config = {
+        identifier: props.identifier,
+        url: props.url,
+        title: props.title
+      }
+    }
+      
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,16 +37,11 @@ export default class Disqus extends React.Component {
   shouldComponentUpdate(nextProps) {
     if(this.shortname !== nextProps.shortname)
       return true
-    const current = this.props.config
+    const current = this.config
     const next = nextProps.config
     if(current.url === next.url && current.identifier === next.identifier)
       return false
     return true
-  }
-  
-  componentWillUpdate(nextProps) {
-    if (this.props.shortname !== nextProps.shortname)
-        this.cleanInstance()
   }
   
   componentDidUpdate() {
@@ -46,7 +51,7 @@ export default class Disqus extends React.Component {
   loadInstance() {
     if(typeof window !== 'undefined' && window.document && this.shortname) {
       let component = this
-      let config = this.props.config
+      let config = this.config
       window.disqus_config = function() {
         this.page.identifier = config.identifier
         this.page.title = config.title
@@ -104,4 +109,7 @@ Disqus.propTypes = {
      */
     url: PropTypes.string,
   }),
+  identifier: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string,
 }
