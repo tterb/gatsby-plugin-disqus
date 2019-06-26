@@ -20,18 +20,11 @@ export default class CommentCount extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    if(this.shortname !== nextProps.shortname)
-      return true
     const current = this.props.config
     const next = nextProps.config
     if(current.url === next.url && current.identifier === next.identifier)
       return false
     return true
-  }
-
-  componentWillUpdate(nextProps) {
-    if(this.shortname !== nextProps.shortname)
-      this.cleanInstance()
   }
   
   componentWillReceiveProps(nextProps) {
@@ -59,7 +52,7 @@ export default class CommentCount extends React.Component {
   render() {
     let { config, placeholder, ...props } = this.props
     return (
-      <span className="disqus-comment-count"
+      <span className='disqus-comment-count'
             data-disqus-identifier={config.identifier}
             data-disqus-url={config.url} {...props}>
         {placeholder}
