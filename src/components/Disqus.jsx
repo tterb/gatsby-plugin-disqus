@@ -57,7 +57,7 @@ export default class Disqus extends React.Component {
         this.page.title = config.title
         this.page.url = config.url
       }
-      insertScript(`//${this.shortname}.disqus.com/embed.js`,
+      insertScript(`https://${this.shortname}.disqus.com/embed.js`,
                    'disqus-embed-script', window.document.body)
     }
   }

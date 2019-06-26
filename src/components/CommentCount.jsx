@@ -39,7 +39,7 @@ export default class CommentCount extends React.Component {
     if(window.document.getElementById('dsq-count-scr')) {
       queueResetCount()
     } else {
-      insertScript(`//${this.shortname}.disqus.com/count.js`,
+      insertScript(`https://${this.shortname}.disqus.com/count.js`,
                    'dsq-count-scr', window.document.body)
     }
   }
