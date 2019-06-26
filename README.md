@@ -1,9 +1,9 @@
-# <img src="https://user-images.githubusercontent.com/16360374/56634709-d11b0280-6617-11e9-8f33-d92638b14c1f.png" height="35"/> Gatsby Plugin Disqus  
+# <img src="https://user-images.githubusercontent.com/16360374/60153578-90677300-9799-11e9-994a-d8f932d2efe1.png" height="38"/> Gatsby Plugin Disqus  
 
-A plugin that simplifies the process of added [Disqus](https://disqus.com/) comments to [Gatsby](https://www.gatsbyjs.org/) websites.  
+A plugin that simplifies adding [Disqus](https://disqus.com/) comments to [Gatsby](https://www.gatsbyjs.org/)  
 
 ## Description  
-The goal of this plugin is to allow users to bring their content to life and cultivate engaged communities by integrating Disqus comments into their blazing-fast Gatsby websites. After struggling to integrate a few different Disqus React components into my Gatsby site, creating an easily-configurable plugin for the Gatsby ecosystem felt like a no-brainer.  
+The goal of this plugin is to allow users to bring their content to life and cultivate engaged communities by integrating Disqus comments into their blazing-fast Gatsby websites. After struggling to integrate different Disqus components into my Gatsby site, creating an easily-configured plugin for the Gatsby ecosystem felt like a no-brainer.  
 
 ## Install  
 ```sh
@@ -34,26 +34,31 @@ module.exports = {
 
 ## Usage  
 
-The plugin can be used as shown in this brief example:  
+You can use the plugin as shown in this brief example:  
 
-```js
-import Disqus from 'gatsby-plugin-disqus'
+```jsx
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
-const PostTemplate = () => (
-  <>
-    /* Page Contents */
-    <Disqus 
-      identifier={post.id}
-      title={post.title}
-      url={`${config.siteUrl}${location.pathname}`}
-    />
-  </>
-)
+const PostTemplate = () => {
+  let disqusConfig = {
+    url: `${config.siteUrl+location.pathname}`,
+    identifier: post.id,
+    title: post.title,
+  }
+  return (
+    <>
+      <h1>{post.title}</h1>
+      <CommentCount config={disqusConfig} placeholder={'...'} />
+      /* Post Contents */
+      <Disqus config={disqusConfig} />
+    </>
+  )
+}
 
 export default PostTemplate
 ```
 
-While providing an `identifier`, `title`, and `url` are optional, it is recommended as it will ensure that threads won't be lost in the case that the domain changes or the post is renamed.
+While providing a `url`, `identifier`, and `title` are optional, these attributes are recommended as it will prevent threads from being lost in the case that the domain changes or the post is renamed.
 
 ## Contributing  
 
@@ -61,7 +66,7 @@ While providing an `identifier`, `title`, and `url` are optional, it is recommen
   2. Create a new folder to be used as your yarn workspace. `mkdir gatsby-disqus-workspace`
   3. Inside your workspace folder, clone this repo.
   4. `cd` into `gatsby-disqus-workspace/gatsby-plugin-disqus/` and run `yarn && yarn watch`. *Leave this terminal window open.*
-  5. In addition to this repo in your workspace folder, add a gatsby site that uses `gatsby-plugin-disqus` for testing purposes.
+  5. Add a gatsby site that uses `gatsby-plugin-disqus` into your workspace folder for testing purposes.
   6. In your workspace folder create a `package.json` and add the following:
 ```json
 {
@@ -72,6 +77,6 @@ While providing an `identifier`, `title`, and `url` are optional, it is recommen
 	]
 }
 ```
-  7. In a new terminal window, `cd` to your workspace folder and run `yarn && yarn workspace <example-site> run develop`.
+  7. In a new terminal window, navigate to your workspace folder and run `yarn && yarn workspace <example-site> run develop`.
 
-If you have unanswered questions, would like help with enhancing or debugging the plugin, feel free create an [issue](https://github.com/tterb/gatsby-plugin-disqus/issues/new) or submit a [pull request](https://github.com/tterb/gatsby-plugin-disqus/pulls)  
+If you have unanswered questions or would like help with enhancing or debugging the plugin, feel free create an [issue](https://github.com/tterb/gatsby-plugin-disqus/issues/new) or submit a [pull request](https://github.com/tterb/gatsby-plugin-disqus/pulls).  
