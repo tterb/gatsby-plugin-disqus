@@ -1,5 +1,16 @@
 # Changelog  
 
+## Version 1.1.0  
+
+  * Added CommentCount component
+  * Added shared utility functions
+  * Modified components to accept configuration object
+  * Modifed project file-structure
+  * Updated README.md contents
+  * Added project homepage to package.json
+
+--------------------------------  
+
 ## Version 1.0.3  
 
   * Fixed npm publishing issues (#2)
