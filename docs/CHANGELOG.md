@@ -1,6 +1,6 @@
 # Changelog  
 
-## Version 1.1.0  
+## Version 1.1.1  
 
   * Added CommentCount component
   * Added shared utility functions
