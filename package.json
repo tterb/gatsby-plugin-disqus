@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-disqus",
   "description": "A component for integrating Disqus comments in Gatsby.",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "repository": "https://github.com/tterb/gatsby-plugin-disqus",
   "homepage": "https://brettstevenson.io/gatsby-plugin-disqus",
   "bugs": {
