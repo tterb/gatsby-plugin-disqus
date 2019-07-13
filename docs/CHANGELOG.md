@@ -1,5 +1,11 @@
 # Changelog  
 
+## Version 1.1.2  
+
+  * Updated `lodash` from `4.17.11 => 4.17.14` to prevent security vulnerability
+
+--------------------------------  
+
 ## Version 1.1.1  
 
   * Added CommentCount component
