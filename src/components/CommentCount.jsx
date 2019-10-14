@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { insertScript, removeScript, debounce } from '../utils'
+import { insertScript, removeScript, debounce, shallowComparison } from '../utils'
 
 const queueResetCount = debounce(() => {
   if(window.DISQUSWIDGETS) {
@@ -20,15 +20,9 @@ export default class CommentCount extends React.Component {
   }
 
   shouldComponentUpdate(nextProps) {
-    const current = this.props.config
-    const next = nextProps.config
-    if(current.url === next.url && current.identifier === next.identifier)
+    if (this.props === nextProps)
       return false
-    return true
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    this.setState(nextProps)
+    return shallowComparison(this.props, nextProps)
   }
 
   componentDidUpdate() {

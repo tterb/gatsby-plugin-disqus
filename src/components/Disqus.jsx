@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { insertScript, removeScript } from '../utils'
+import { insertScript, removeScript, shallowComparison } from '../utils'
 import "../style.css"
 
 export default class Disqus extends React.Component {
@@ -17,31 +17,19 @@ export default class Disqus extends React.Component {
         title: props.title
       }
     }
-      
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState(nextProps)
-  }
-
-  componentWillMount() {
-    if(typeof window !== 'undefined' && window.document && this.shortname) {
-      this.cleanInstance()
-    }
   }
   
   componentDidMount() {
+    if(typeof window !== 'undefined' && window.document && this.shortname) {
+      this.cleanInstance()
+    }
     this.loadInstance()
   }
   
   shouldComponentUpdate(nextProps) {
-    if(this.shortname !== nextProps.shortname)
-      return true
-    const current = this.config
-    const next = nextProps.config
-    if(current.url === next.url && current.identifier === next.identifier)
+    if (this.props === nextProps)
       return false
-    return true
+    return shallowComparison(this.props, nextProps)
   }
   
   componentDidUpdate() {
