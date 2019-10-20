@@ -1,5 +1,11 @@
 # Changelog  
 
+## Version 1.1.4  
+
+  * Fix npm publishing issue
+
+--------------------------------  
+
 ## Version 1.1.3  
 
   * Added shallow-comparison helper-function to prevent unnecessary component updates
