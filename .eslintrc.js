@@ -1,0 +1,12 @@
+module.exports = {
+  extends: ['airbnb', 'prettier'],
+  rules: {
+    'react/jsx-filename-extension': 'on',
+    'react/require-default-props': 'off',
+  },
+  parser: 'babel-eslint',
+  env: {
+    browser: true,
+    node: true,
+  },
+};

@@ -1,0 +1,22 @@
+---
+title: "Contribute"
+---
+
+1. Make sure you have `yarn` installed.  
+2. Create a new folder to be used as your yarn workspace. `mkdir gatsby-disqus-workspace`  
+3. Inside your workspace folder, clone this repo.  
+4. Navigate into `gatsby-disqus-workspace/gatsby-plugin-disqus/` and run `yarn && yarn watch`. *Leave this terminal window open.*  
+5. In addition to this repo in your workspace folder, add a gatsby site that uses `gatsby-plugin-disqus` for testing purposes.  
+6. In your workspace folder create a `package.json` and add the following:  
+```json
+{
+  "private": true,
+  "workspaces": [
+    "your-example-test-site",
+    "gatsby-plugin-disqus/lib"
+  ]
+}
+```  
+7. In a new terminal window, `cd` to your workspace folder and run `yarn && yarn workspace <example-site> run develop`.  
+
+If you have questions or would like help with enhancing or debugging the plugin, feel free create an [issue](https://github.com/tterb/gatsby-plugin-disqus/issues/new) or submit a [pull request](https://github.com/tterb/gatsby-plugin-disqus/pulls)  

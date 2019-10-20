@@ -1,0 +1,228 @@
+/*
+  CUSTOM PRISM THEME
+*/
+
+// VARS
+
+$very-light-gray: #c9c4dd;
+$light-gray: #675a80;
+$gray: #373b41;
+$dark-gray: #181026;
+$very-dark-gray: #201632;
+$cyan: #74CAB4;
+$blue: #31a7c9;
+$purple: #7450b6;
+$yellow: #DBB36E;
+$red: #E2454B;
+$orange: #db9968;
+$light-orange: #ffb899;
+
+// MAPPED VARS
+
+$syntax-text-color: $very-light-gray;
+$syntax-cursor-color: white;
+$syntax-selection-color: lighten($dark-gray, 10%);
+$syntax-background-color: $very-dark-gray;
+$syntax-wrap-guide-color: $dark-gray;
+$syntax-indent-guide-color: $gray;
+$syntax-invisible-character-color: $gray;
+$syntax-result-marker-color: $light-gray;
+$syntax-result-marker-color-selected: white;
+$syntax-gutter-text-color: $very-light-gray;
+$syntax-gutter-text-color-selected: $syntax-gutter-text-color;
+$syntax-gutter-background-color: $dark-gray;
+$syntax-gutter-background-color-selected: $gray;
+$syntax-color-renamed: $blue;
+$syntax-color-added: $yellow;
+$syntax-color-modified: $orange;
+$syntax-color-removed: $red;
+
+code[class*='language-'],
+pre[class*='language-'] {
+	color: $very-light-gray;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	line-height: 1.5;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+code[class*='language-css'],
+pre[class*='language-css'] {
+  color: $orange;
+}
+
+// pre[class*='language-']::-moz-selection, pre[class*='language-'] ::-moz-selection,
+// code[class*='language-']::-moz-selection, code[class*='language-'] ::-moz-selection {
+// 	background: $syntax-selection-color;
+// 	text-shadow: none;
+// }
+
+pre[class*='language-']::-moz-selection, pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection, code[class*='language-'] ::-moz-selection,
+pre[class*='language-']::selection, pre[class*='language-'] ::selection,
+code[class*='language-']::selection, code[class*='language-'] ::selection {
+	background: $syntax-selection-color;
+	text-shadow: none;
+}
+
+/* Code blocks */
+pre[class*='language-'] {
+	width: 95%;
+	margin: 0.5rem 0;
+	overflow: auto;
+}
+
+pre[class*='language-']::-moz-selection,
+pre[class*='language-'] ::-moz-selection,
+code[class*='language-']::-moz-selection,
+code[class*='language-'] ::-moz-selection {
+	background: rgba(255,255,255,0.25);
+	text-shadow: none;
+}
+
+pre[class*='language-']::selection,
+pre[class*='language-'] ::selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::selection {
+	background: rgba(255,255,255,0.25);
+	text-shadow: none;
+}
+
+pre[class*='language-'] {
+	background: $syntax-background-color;
+	border-radius: 8px;
+}
+
+/* Inline code */
+:not(pre) > code[class*='language-'] {
+	color: #663399;
+	border-radius: 0.3rem;
+	padding: 0.1rem;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: rgba(255,255,255,0.25);
+}
+
+.token {
+  &.punctuation {
+    color: $syntax-text-color;
+    &.comment {
+      color: #675a80;
+    }
+    &.string,
+    &.variable,
+    &.parameters,
+    &.array {
+      color: $syntax-text-color;
+    }
+    &.important {
+      color: $light-orange;
+    }
+  }
+  &.operator,
+	&.property {
+    color: $syntax-text-color;
+  }
+  &.entity {
+    color: $light-orange;
+    text-decoration: underline;
+  }
+  &.regexp,
+	&.function,
+  &.important {
+    color: $cyan;
+  }
+	&.tag-id,
+  &.selector {
+    color: $red;
+    text-decoration: underline;
+  }
+  &.tag {
+    color: $blue;
+		.token.script {
+			color: $light-gray;
+		}
+  }
+	&.tag-id {
+		color: $red;
+	}
+  &.attr-name {
+    color: $orange;
+  }
+  &.attr-value {
+    color: $yellow;
+    .punctuation {
+      color: $syntax-text-color;
+    }
+  }
+  &.atrule {
+    color: $cyan;
+    .atrule-id {
+      color: $purple;
+    }
+    .punctuation {
+      color: $syntax-text-color;
+    }
+  }
+	&.heading,
+	&.identity,
+	&.keyword {
+		color: $blue;
+	}
+  &.string,
+  &.char,
+  &.builtin,
+	&.symbol,
+  &.url {
+    color: $yellow;
+  }
+  &.pseudo-class {
+    color: $orange;
+  }
+  &.boolean,
+  &.number,
+  &.constant {
+    color: $orange;
+  }
+  &.important {
+    font-weight: bold;
+  }
+  &.entity {
+    cursor: help;
+  }
+}
+
+.namespace {
+	opacity: 0.7;
+}
+
+.token.char {
+  color: red;
+}
+
+// pre[class*='language-javascript'] {
+// 	.token.punctuation {
+// 		color: $light-gray;
+// 	}
+//   // color: $orange;
+// }
+
+pre[class*='language-shell'] {
+	.token.function {
+		color: $blue;
+	}
+  // color: $orange;
+}
