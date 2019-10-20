@@ -1,5 +1,20 @@
 # Changelog  
 
+## Version 1.1.3  
+
+  * Added shallow-comparison helper-function to prevent unnecessary component updates
+  * Removed renamed `componentWillMount` and `componentWillUpdate` lifecycle methods
+  * Bumped `mixin-deep` from `1.3.1 => 1.3.2` to prevent security vulnerability
+  * Removed unnecessary stylesheet to prevent overriding user styles
+
+--------------------------------  
+
+## Version 1.1.2  
+
+  * Updated `lodash` from `4.17.11 => 4.17.14` to prevent security vulnerability
+
+--------------------------------  
+
 ## Version 1.1.2  
 
   * Updated `lodash` from `4.17.11 => 4.17.14` to prevent security vulnerability
