@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { insertScript, removeScript, shallowComparison } from '../utils'
-import "../style.css"
 
 export default class Disqus extends React.Component {
   
