@@ -63,7 +63,7 @@ While providing a `url`, `identifier`, and `title` are optional, these attribute
 ## Contributing  
 
   1. Make sure you have `yarn` installed.
-  2. Create a new folder to be used as your yarn workspace. `mkdir gatsby-disqus-workspace`
+  2. Create a new folder for your yarn workspace. `mkdir gatsby-disqus-workspace`
   3. Inside your workspace folder, clone this repo.
   4. `cd` into `gatsby-disqus-workspace/gatsby-plugin-disqus/` and run `yarn && yarn watch`. *Leave this terminal window open.*
   5. Add a gatsby site that uses `gatsby-plugin-disqus` into your workspace folder for testing purposes.
