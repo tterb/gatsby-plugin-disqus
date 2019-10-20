@@ -117,3 +117,4 @@ $RECYCLE.BIN/
 /index.js
 /gatsby-*.js
 lib/*
+.release*.yml
