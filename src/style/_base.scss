@@ -30,7 +30,7 @@ p {
     height: 3px;
     left: 50%;
     bottom: -1px;
-    border-radius: 6px;
+    border-radius: 4px;
     transform: translateX(-50%);
     transition: all 250ms;
     z-index: -1;
@@ -38,7 +38,7 @@ p {
   &:hover {
     color: white;
     &::after {
-      width: 110%;
+      width: 105%;
       height: 110%;
     }
   }

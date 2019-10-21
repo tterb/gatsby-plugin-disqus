@@ -9,7 +9,7 @@ import DisqusLogo from './Logo/Disqus.svg'
 import swoop from './Wave/swoop_footer.svg'
 
 const FooterContainer = styled.footer`
-  ${tw`flex relative flex-initial flex-col justify-center items-center mt-16 p-4 pb-6`};
+  ${tw`flex relative flex-initial flex-col justify-center items-center mt-16 p-4 py-8`};
   background: ${props => props.theme.colors.primaryDark};
   color: ${props => props.theme.colors.background};
 `
@@ -28,7 +28,7 @@ const Swoop = styled.div`
 const ResponsiveLogo = styled.img`
   width: 100px;
   height: 25px;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   @media (min-width: 400px) {
     width: 150px;
     height: 35px;
