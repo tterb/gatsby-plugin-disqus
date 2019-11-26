@@ -59,6 +59,7 @@ export default PostTemplate
 ```
 
 While providing a `url`, `identifier`, and `title` are optional, these attributes are recommended as it will prevent threads from being lost in the case that the domain changes or the post is renamed.
+Additional information on all available parameters can be found on the [wiki](https://github.com/tterb/gatsby-plugin-disqus/wiki/Configure#parameters).
 
 ## Contributing  
 
