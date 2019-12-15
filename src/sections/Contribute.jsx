@@ -8,8 +8,12 @@ import Section from '../components/Section'
 
 const Content = styled(Box)`
   .text-content {
-    ol li {
-      margin: 0.5rem 0;
+    ol {
+      margin-block-start: 0;
+      margin-bottom: 1.5rem;
+      li {
+        margin: 0.5rem 0;
+      }
     }
   }
 `
