@@ -2,35 +2,36 @@
   CUSTOM PRISM THEME
 */
 
-// VARS
+// Base
+$darker-gray:   #1b1026;
+$dark-gray:     #22152e;
+$gray:          #392c45;
+$light-gray:    #77638C;
+$lighter-gray:  #d1c4dd;
+$lightest-gray: #f8Ffff;
 
-$very-light-gray: #c9c4dd;
-$light-gray: #675a80;
-$gray: #373b41;
-$dark-gray: #181026;
-$very-dark-gray: #201632;
-$cyan: #74CAB4;
-$blue: #31a7c9;
-$purple: #7450b6;
-$yellow: #DBB36E;
-$red: #E2454B;
-$orange: #db9968;
-$light-orange: #ffb899;
+// Colors
+$red:           #bF3b40;
+$orange:        #db8a6c;
+$light-orange:  #ffb899;
+$yellow:        #dbb36e;
+$cyan:          #26c099;
+$blue:          #269dbf;
+$purple:        #5c2eaf;
 
-// MAPPED VARS
-
-$syntax-text-color: $very-light-gray;
-$syntax-cursor-color: white;
-$syntax-selection-color: lighten($dark-gray, 10%);
-$syntax-background-color: $very-dark-gray;
-$syntax-wrap-guide-color: $dark-gray;
+// Mapped Vars
+$syntax-text-color: $lighter-gray;
+$syntax-cursor-color: $lightest-gray;
+$syntax-selection-color: rgba($lighter-gray, 0.2);
+$syntax-background-color: $dark-gray;
+$syntax-wrap-guide-color: $darker-gray;
 $syntax-indent-guide-color: $gray;
 $syntax-invisible-character-color: $gray;
 $syntax-result-marker-color: $light-gray;
-$syntax-result-marker-color-selected: white;
-$syntax-gutter-text-color: $very-light-gray;
+$syntax-result-marker-color-selected: $lightest-gray;
+$syntax-gutter-text-color: $lighter-gray;
 $syntax-gutter-text-color-selected: $syntax-gutter-text-color;
-$syntax-gutter-background-color: $dark-gray;
+$syntax-gutter-background-color: $darker-gray;
 $syntax-gutter-background-color-selected: $gray;
 $syntax-color-renamed: $blue;
 $syntax-color-added: $yellow;
@@ -39,11 +40,11 @@ $syntax-color-removed: $red;
 
 code[class*='language-'],
 pre[class*='language-'] {
-	color: $very-light-gray;
+	color: $lighter-gray;
 	font-family: Consolas, Monaco, 'Andale Mono', monospace;
 	direction: ltr;
 	text-align: left;
-	white-space: pre;
+	$lightest-gray-space: pre;
 	word-spacing: normal;
 	word-break: normal;
 	line-height: 1.5;
@@ -85,7 +86,7 @@ pre[class*='language-']::-moz-selection,
 pre[class*='language-'] ::-moz-selection,
 code[class*='language-']::-moz-selection,
 code[class*='language-'] ::-moz-selection {
-	background: rgba(255,255,255,0.25);
+	background: $syntax-selection-color;
 	text-shadow: none;
 }
 
@@ -93,7 +94,7 @@ pre[class*='language-']::selection,
 pre[class*='language-'] ::selection,
 code[class*='language-']::selection,
 code[class*='language-'] ::selection {
-	background: rgba(255,255,255,0.25);
+	background: $syntax-selection-color;
 	text-shadow: none;
 }
 
