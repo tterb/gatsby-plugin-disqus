@@ -9,8 +9,8 @@ import DisqusLogo from './Logo/Disqus.svg'
 import swoop from './Wave/swoop_footer.svg'
 
 const FooterContainer = styled.footer`
-  ${tw`flex relative flex-initial flex-col justify-center items-center mt-16 p-4 py-8`};
-  background: ${props => props.theme.colors.primaryDark};
+  ${tw`flex relative flex-initial flex-col justify-center items-center mt-16 p-4 py-8 pt-2`};
+  background: linear-gradient(${props => props.theme.colors.primaryDark} 15%, ${props => props.theme.colors.primaryDarker});
   color: ${props => props.theme.colors.background};
 `
 
@@ -20,7 +20,7 @@ const Swoop = styled.div`
   background-size: 2045px 120px;
   background-position: 50%;
   height: 120px;
-  bottom: 167px;
+  bottom: 142px;
   content: "";
   z-index: 10 !important;
 `
@@ -59,6 +59,7 @@ Logo.propTypes = {
 
 const Footer = () => (
   <FooterContainer>
+    <Swoop/>
     <Fade bottom>
       <span>
         <Text mb={3} pt={1} pb={1}
