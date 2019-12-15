@@ -19,21 +19,20 @@ const HeaderContainer = styled(Headroom)`
   z-index: 99999;
 `
 
-const formatLinks = allLinks =>
-  Object.entries(allLinks).reduce(
-    (acc, [key, value]) => {
-      const isHome = key === 'home'
-      return isHome
-        ? { ...acc, home: value, }
-        : { ...acc, links: [...acc.links, { name: capitalize(key), value }] }
-    },
-    { links: [], home: null },
-  )
+const formatLinks = allLinks => Object.entries(allLinks).reduce(
+  (acc, [key, value]) => {
+    const isHome = key === 'home'
+    return isHome
+      ? { ...acc, home: value }
+      : { ...acc, links: [...acc.links, { name: capitalize(key), value }] }
+  },
+  { links: [], home: null },
+)
 
 const Header = () => (
   <HeaderContainer>
     <Fade top>
-      <Flex flexWrap="wrap" justifyContent="space-between" alignItems="center" p={3}>
+      <Flex flexWrap='wrap' justifyContent='space-between' alignItems='center' p={3}>
         <SectionLinks>
           {({ allLinks }) => {
             const { home, links } = formatLinks(allLinks)
@@ -41,8 +40,8 @@ const Header = () => (
             const homeLink = home && (
               <Image
                 src={Logo}
-                width="40px"
-                alt="Logo"
+                width='40px'
+                alt='Logo'
                 onClick={home.onClick}
                 style={{
                   marginLeft: '20px',
@@ -51,15 +50,15 @@ const Header = () => (
               />
             )
             const navLinks = links.map(({ name, value }, index) => (
-              (index > 0 ?
-              <RouteLink
-                key={name}
-                onClick={value.onClick}
-                selected={value.selected}
-              >
-                {name}
-              </RouteLink>
-            : '')))
+              (index > 0 ? (
+                <RouteLink
+                  key={name}
+                  onClick={value.onClick}
+                  selected={value.selected}
+                >
+                  {name}
+                </RouteLink>
+            ) : '')))
             return (
               <Fragment>
                 {homeLink}

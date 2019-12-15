@@ -33,22 +33,22 @@ const SocialIcons = () => (
   <Links>
     <Box mx={2} fontSize={[3, 4, 4]}>
       <IconLink href='https://github.com/tterb/gatsby-plugin-disqus' target='_blank'>
-        <Github title='GitHub'/>
+        <Github title='GitHub' />
       </IconLink>
     </Box>
     <Box mx={2} fontSize={[3, 4, 4]}>
       <IconLink href='https://www.npmjs.com/package/gatsby-plugin-disqus' target='_blank'>
-        <Npm title='NPM'/>
+        <Npm title='NPM' />
       </IconLink>
     </Box>
     <Box mx={2} fontSize={[3, 4, 4]}>
       <IconLink href='https://twitter.com/bstevensondev' target='_blank'>
-        <Twitter title='Twitter'/>
+        <Twitter title='Twitter' />
       </IconLink>
     </Box>
     <Box mx={2} fontSize={[3, 4, 4]}>
       <IconLink href='https://brettstevenson.io/contact' target='_blank'>
-        <Envelope title='Contact'/>
+        <Envelope title='Contact' />
       </IconLink>
     </Box>
   </Links>

@@ -1,7 +1,5 @@
-import React from 'react'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
-import PropTypes from 'prop-types'
 
 
 export const Title = styled.h1`

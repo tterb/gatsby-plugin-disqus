@@ -14,7 +14,7 @@ const SwoopTop = styled.div`
   background-position: 50%;
   height: 240px;
   bottom: -40px;
-  content: "";
+  content: '';
   z-index: 0 !important;
 `
 
@@ -25,7 +25,7 @@ const SwoopTopLeft = styled.div`
   background-position: 50%;
   height: 180px;
   bottom: -20px;
-  content: "";
+  content: '';
   z-index: 0 !important;
 `
 
@@ -36,7 +36,7 @@ const SwoopBottom = styled.div`
   background-position: 50%;
   height: 240px;
   bottom: -200px;
-  content: "";
+  content: '';
   z-index: 9 !important;
 `
 
@@ -47,7 +47,7 @@ const SwoopBottom = styled.div`
 //   background-position: 50%;
 //   height: 240px;
 //   bottom: -40px;
-//   content: "";
+//   content: '';
 //   z-index: 0 !important;
 // `
 

@@ -3,7 +3,6 @@ import { StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
-import ReactMarkdown from 'react-markdown'
 import Fade from 'react-reveal/Fade'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 import Section from '../components/Section'
@@ -41,7 +40,7 @@ const Motivation = () => (
     <StaticQuery
       query={motivationQuery}
       render={data => {
-        const title = data.mdx.frontmatter.title
+        const { title } = data.mdx.frontmatter
         const content = data.mdx.code.body
         const logo = data.logo.childImageSharp.fluid
         return (

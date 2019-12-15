@@ -5,13 +5,14 @@ import tw from 'tailwind.macro'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import Fade from 'react-reveal/Fade'
-import Section from '../components/Section'
-import { CardContainer, Card } from '../components/Card'
-import ImageSubtitle from '../components/ImageSubtitle'
-import Wave from '../components/Wave'
 // Icons
 import { Github } from 'styled-icons/boxicons-logos/Github'
 import { Globe } from 'styled-icons/boxicons-regular/Globe'
+// Components
+import { CardContainer, Card } from '../components/Card'
+import Section from '../components/Section'
+import ImageSubtitle from '../components/ImageSubtitle'
+import Wave from '../components/Wave'
 
 const CARD_HEIGHT = '200px'
 const MEDIA_QUERY_SMALL = '@media (max-width: 400px)'
@@ -101,7 +102,7 @@ const Example = ({
       <TextContainer>
         <span>
           <Title my={2}>
-            <a href={projectUrl} target='_blank'>{title}</a>
+            <a href={projectUrl} target='_blank' rel='noopener noreferrer'>{title}</a>
           </Title>
         </span>
         <TextBody width={[1]}>
@@ -113,22 +114,24 @@ const Example = ({
         <ExampleImage src={logo.childImageSharp.resize.src} alt={title} />
         <ExampleTag>
           <Flex style={{ float: 'right' }}>
-            { repoUrl ?
+            { repoUrl ? (
               <Box mx={1} fontSize={5}>
                 <SocialLink mt={-1} fontSize={[3, 4, 4]}>
-                  <IconLink href={repoUrl} target='_blank'>
-                    <Github title='GitHub'/>
+                  <IconLink href={repoUrl} target='_blank' rel='noopener noreferrer'>
+                    <Github title='GitHub' />
                   </IconLink>
                 </SocialLink>
-              </Box> : '' }
-            { projectUrl ?
+              </Box>
+            ) : '' }
+            { projectUrl ? (
               <Box mx={1} fontSize={5}>
                 <SocialLink mt={-1} mr={3} fontSize={[3, 4, 4]}>
-                  <IconLink href={projectUrl} target='_blank'>
-                    <Globe title='Website'/>
+                  <IconLink href={projectUrl} target='_blank' rel='noopener noreferrer'>
+                    <Globe title='Website' />
                   </IconLink>
                 </SocialLink>
-              </Box> : '' }
+              </Box>
+            ) : '' }
           </Flex>
           <ImageSubtitle
             bg='primaryLight'
@@ -136,7 +139,9 @@ const Example = ({
             y='bottom'
             x='right'
             round
-          >{tag}</ImageSubtitle>
+          >
+            {tag}
+          </ImageSubtitle>
         </ExampleTag>
       </ImageContainer>
     </Flex>
@@ -149,6 +154,7 @@ Example.propTypes = {
   projectUrl: PropTypes.string.isRequired,
   repoUrl: PropTypes.string.isRequired,
   tag: PropTypes.string.isRequired,
+  logo: PropTypes.any,
 }
 
 const Examples = () => (
@@ -162,14 +168,14 @@ const Examples = () => (
           <CardContainer minWidth='350px'>
             {examples.map(({ node }, index) => (
               <Fade bottom delay={index * 200}>
-                <Example key={index} {...node.frontmatter} />
+                <Example key={node.title} {...node.frontmatter} />
               </Fade>
             ))}
           </CardContainer>
         )
       })}
     />
-    <Wave position='bottom'/>
+    <Wave position='bottom' />
   </Section.Container>
 )
 

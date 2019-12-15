@@ -4,8 +4,10 @@ import PropTypes from 'prop-types'
 import { ScrollingProvider } from 'react-scroll-section'
 import 'react-tippy/dist/tippy.css'
 import config from 'react-reveal/globals'
-import colors from '../../colors'
+// Components
 import Helmet from './Helmet'
+// Styles
+import colors from '../../colors'
 import 'typeface-poppins'
 
 const GlobalStyle = createGlobalStyle`

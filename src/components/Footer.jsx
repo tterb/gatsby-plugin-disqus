@@ -43,7 +43,7 @@ const And = styled(Text)`
   margin-right: 1.25rem;
 `
 
-const Logo = ({ url, logo, alt='' }) => (
+const Logo = ({ url, logo, alt = '' }) => (
   <Box>
     <a href={url} rel='noopener noreferrer' target='_blank'>
       <ResponsiveLogo src={logo} alt={alt} />
@@ -59,7 +59,7 @@ Logo.propTypes = {
 
 const Footer = () => (
   <FooterContainer>
-    <Swoop/>
+    <Swoop />
     <Fade bottom>
       <span>
         <Text mb={3} pt={1} pb={1}

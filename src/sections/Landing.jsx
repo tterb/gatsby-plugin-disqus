@@ -1,16 +1,15 @@
 import React, { Fragment } from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import { Flex, Box } from 'rebass'
+import { Flex } from 'rebass'
 import { SectionLink } from 'react-scroll-section'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
+// Components
 import Section from '../components/Section'
 import SocialIcons from '../components/SocialIcons'
 import MouseIcon from '../components/MouseIcon'
 import { Title } from '../components/Titles'
-import Wave from '../components/Wave'
 import Comment from '../components/Logo/comments.svg'
-import { primary }from '../../colors.js'
 // Styles
 import '../style/main.scss'
 
@@ -50,13 +49,13 @@ const LandingPage = () => (
     <StaticQuery
       query={heroQuery}
       render={data => {
-        const { title, description, socialLinks } = data.site.siteMetadata
+        const { title, description } = data.site.siteMetadata
         return (
           <Fragment>
             <Wrapper>
               <Contents>
                 <Title>{title}</Title>
-                <Flex alignItems="start" justifyContent="start" flexWrap="wrap">
+                <Flex alignItems='start' justifyContent='start' flexWrap='wrap'>
                   <SubText>{description}</SubText>
                 </Flex>
                 <SocialIcons />

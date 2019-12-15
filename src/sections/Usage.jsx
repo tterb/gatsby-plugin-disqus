@@ -1,9 +1,9 @@
 import React from 'react'
-import { Box, Image, Flex } from 'rebass'
 import { StaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import { Box, Flex } from 'rebass'
 import Fade from 'react-reveal/Fade'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+// Components
 import Section from '../components/Section'
 import Wave from '../components/Wave'
 
@@ -13,7 +13,7 @@ const Usage = () => (
     <StaticQuery
       query={usageQuery}
       render={data => {
-        const title = data.mdx.frontmatter.title
+        const { title } = data.mdx.frontmatter
         const content = data.mdx.code.body
         return (
           <>
@@ -24,7 +24,7 @@ const Usage = () => (
                   <MDXRenderer>{content}</MDXRenderer>
                 </Fade>
               </Box>
-              <Wave direction='left'/>
+              <Wave direction='left' />
             </Flex>
           </>
         )

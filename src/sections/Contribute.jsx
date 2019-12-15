@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Image, Flex } from 'rebass'
+import { Box, Flex } from 'rebass'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
@@ -23,7 +23,7 @@ const Contribute = () => (
     <StaticQuery
       query={contributeQuery}
       render={data => {
-        const title = data.mdx.frontmatter.title
+        const { title } = data.mdx.frontmatter
         const content = data.mdx.code.body
         return (
           <>
