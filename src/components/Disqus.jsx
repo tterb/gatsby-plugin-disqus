@@ -13,7 +13,8 @@ export default class Disqus extends React.Component {
       this.config = {
         identifier: props.identifier,
         url: props.url,
-        title: props.title
+        title: props.title,
+        language: props.language,
       }
     }
   }
@@ -43,6 +44,7 @@ export default class Disqus extends React.Component {
         this.page.identifier = config.identifier
         this.page.title = config.title
         this.page.url = config.url
+        this.language = config.language
       }
       insertScript(`https://${this.shortname}.disqus.com/embed.js`,
                    'disqus-embed-script', window.document.body)
@@ -95,8 +97,17 @@ Disqus.propTypes = {
      * (If undefined, Disqus will use the global.location.href)
      */
     url: PropTypes.string,
+    /*
+     * Tells the Disqus service to override the default site language for the
+     * current page.
+     * This allows for dynamically loading the Disqus embed in different 
+     * languages on a per-page basis.
+     * (If undefined, Disqus will use the default site language)
+     */
+    language: PropTypes.string,
   }),
   identifier: PropTypes.string,
   title: PropTypes.string,
   url: PropTypes.string,
+  language: PropTypes.string,
 }
