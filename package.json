@@ -32,11 +32,11 @@
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "prop-types": "^15.6.2"
-  },
-  "dependencies": {
     "babel-preset-gatsby-package": "^0.1.2",
+    "prop-types": "^15.6.2",
     "cross-env": "^5.2.0"
+  },
+  "dependencies": {    
   },
   "peerDependencies": {
     "react": "^16.8.5"
