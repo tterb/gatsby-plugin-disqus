@@ -15,14 +15,13 @@ const FooterContainer = styled.footer`
 `
 
 const Swoop = styled.div`
-  ${tw`absolute w-full pin-l mb-0`}
+  ${tw`absolute w-full pin-l mb-0 z-10`}
   background: url(${swoop}) no-repeat;
   background-size: 2045px 120px;
   background-position: 50%;
-  height: 120px;
-  bottom: 142px;
   content: "";
-  z-index: 10 !important;
+  height: 120px;
+  top: -120px;
 `
 
 const ResponsiveLogo = styled.img`
