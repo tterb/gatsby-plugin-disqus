@@ -1,4 +1,5 @@
 const manifestConfig = require(`./manifest-config`);
+const tailwindConfig = require(`./tailwind.js`);
 require(`dotenv`).config();
 
 const { ANALYTICS_ID } = process.env;
@@ -37,13 +38,18 @@ module.exports = {
   pathPrefix: '/gatsby-plugin-disqus',
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: manifestConfig,
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        postCssPlugins: [require(`tailwindcss`)(`./tailwind.js`)],
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -107,6 +113,52 @@ module.exports = {
           },
           `gatsby-remark-prismjs`,
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-postcss`,
+      options: {
+        postCssPlugins: [
+          require(`tailwindcss`)(tailwindConfig),
+          require(`autoprefixer`),
+          ...(process.env.NODE_ENV === `production` ?
+            [require(`cssnano`)] :
+            []),
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-postcss`, // Implements PostCSS
+      options: {
+        postCssPlugins: [
+          require(`autoprefixer`),
+          require(`postcss-import`), // Add support for sass-like `@import`
+          require(`postcss-extend`), // Add support for sass-like `@extend`
+          require(`postcss-nesting`), // Add support for sass-like nesting of rules
+          require(`postcss-calc`),
+          require(`postcss-discard-comments`),
+          require(`cssnano`), // Minify CSS
+          require(`postcss-reporter`),
+          require(`postcss-pxtorem`)({
+            mediaQuery: false, // Ignore media queries
+            minPixelValue: 0, // Minimal pixel value that will be processed
+            propList: [], // List of CSS properties that can be changed from px to rem; empty array means that all CSS properties can change from px to rem
+            replace: true, // Replace pixels with rems
+            rootValue: 16, // Root font-size
+            selectorBlackList: [`html`], // Ignore pixels used for html
+            unitPrecision: 4, // Round rem units to 4 digits
+          }),
+          require(`postcss-preset-env`)({
+            stage: 3, // More info about stages: https://cssdb.org/#staging-process
+          }),
+          require(`tailwindcss`)(tailwindConfig),
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-purgecss`,
+      options: {
+        tailwind: true,
       },
     },
     {
