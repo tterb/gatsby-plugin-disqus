@@ -8,7 +8,7 @@
     "develop": "cleandir ./.cache && gatsby develop",
     "start": "npm run develop",
     "lint": "eslint ./src",
-    "deploy": "gatsby build --prefix-paths"
+    "deploy": "cleandir ./.cache && gatsby build --prefix-paths"
   },
   "repository": {
     "type": "git",
