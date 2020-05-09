@@ -41,6 +41,8 @@
     "gatsby-plugin-manifest": "^2.0.29",
     "gatsby-plugin-netlify": "^2.1.22",
     "gatsby-plugin-offline": "^2.0.25",
+    "gatsby-plugin-postcss": "^2.3.1",
+    "gatsby-plugin-purgecss": "^4.0.1",
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sass": "^2.0.11",
     "gatsby-plugin-sharp": "^2.0.30",
@@ -70,33 +72,28 @@
     "styled-components": "^4.0.2",
     "styled-icons": "^7.15.1",
     "tailwind.macro": "^0.5.10",
-    "tailwindcss": "^0.7.3",
+    "tailwindcss": "^0.7.4",
     "typeface-poppins": "^0.0.72",
     "typeface-source-code-pro": "0.0.71",
     "typeface-titillium-web": "^0.0.54"
   },
   "devDependencies": {
+    "@hot-loader/react-dom": "^16.10.2",
     "babel-eslint": "^8.0.3",
     "chalk": "^2.4.1",
-    "contentful-import": "^7.4.0",
+    "cssnano": "^4.1.10",
     "eslint": "^5.11.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jsx-a11y": "^6.1.2",
-    "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-react": "^7.17.0",
-    "husky": "^1.3.1",
-    "lint-staged": "^8.1.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "postcss-calc": "^7.0.1",
+    "postcss-discard-comments": "^4.0.2",
+    "postcss-extend": "^1.0.5",
+    "postcss-import": "^12.0.1",
+    "postcss-nesting": "^7.0.1",
+    "postcss-preset-env": "^6.7.0",
+    "postcss-pxtorem": "^4.0.1",
+    "postcss-reporter": "^6.0.1"
   }
 }
