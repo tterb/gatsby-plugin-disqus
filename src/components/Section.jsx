@@ -60,7 +60,7 @@ Container.propTypes = {
   className: PropTypes.string,
 };
 
-const Header = ({ name, icon = '', label = '' }) => (
+const Header = ({ name, icon, label }) => (
   <Slide left>
     <Title color='primaryDark' as='h2' fontSize={[5, 6, 6]} mb={4} zIndex={99}>
       <LinkAnimated selected>
@@ -75,10 +75,16 @@ const Header = ({ name, icon = '', label = '' }) => (
   </Slide>
 )
 
+Header.defaultProps = {
+  icon: '',
+  label: '',
+}
+
 Header.propTypes = {
   name: PropTypes.string.isRequired,
   icon: PropTypes.string,
   label: PropTypes.string,
+  margin: PropTypes.number,
 }
 
 export default {
