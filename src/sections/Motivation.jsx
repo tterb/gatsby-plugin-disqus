@@ -76,8 +76,8 @@ const motivationQuery = graphql`
     }
     logo: file(relativePath: {eq: "logo.png"}) {
       childImageSharp {
-        fluid(maxWidth: 980) {
-          ...GatsbyImageSharpFluid_withWebp
+        fluid(quality: 90) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
