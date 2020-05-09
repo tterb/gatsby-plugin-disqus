@@ -39,7 +39,7 @@ $syntax-color-modified: $orange;
 $syntax-color-removed: $red;
 
 pre code {
-  margin-left: 0.75%;
+  margin-left: 0.75% !important;
   padding: 1.15rem 1.4rem 1.25rem 1.25rem;
 }
 
@@ -65,12 +65,6 @@ code[class*='language-css'],
 pre[class*='language-css'] {
   color: $orange;
 }
-
-// pre[class*='language-']::-moz-selection, pre[class*='language-'] ::-moz-selection,
-// code[class*='language-']::-moz-selection, code[class*='language-'] ::-moz-selection {
-// 	background: $syntax-selection-color;
-// 	text-shadow: none;
-// }
 
 pre[class*='language-']::-moz-selection, pre[class*='language-'] ::-moz-selection,
 code[class*='language-']::-moz-selection, code[class*='language-'] ::-moz-selection,
