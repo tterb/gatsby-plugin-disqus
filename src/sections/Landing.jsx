@@ -8,10 +8,7 @@ import styled from 'styled-components'
 import Section from '../components/Section'
 import SocialIcons from '../components/SocialIcons'
 import MouseIcon from '../components/MouseIcon'
-import { Title } from '../components/Titles'
 import Comment from '../components/Logo/comments.svg'
-// Styles
-import '../style/main.scss'
 
 
 const Wrapper = styled.div`
@@ -25,13 +22,15 @@ const Contents = styled.div`
   margin-left: 5%;
 `
 
+const Title = styled.h1`
+  ${tw`relative inline-block sm:text-4xl md:text-5xl lg:text-6xl font-sans font-bold tracking-normal leading-tight my-6 ml-3 sm:ml-0 z-99`}
+  color: rgba(255,255,255,0.9);
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+`
+
 const SubText = styled.p`
   ${tw`text-xl text-left pl-1`}
   color: rgba(255,255,255,0.75);
-`
-
-const Links = styled.div`
-  ${tw`flex justify-start items-start flex-wrap`}
 `
 
 const ImgWrapper = styled.div`

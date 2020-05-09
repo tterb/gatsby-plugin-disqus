@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import swoopTop from './Wave/swoop_topright.svg'
 import swoopTopLeft from './Wave/swoop_topleft.svg'
 import swoopBottom from './Wave/swoop_down.svg'
-// import swoopBottomLeft from './Wave/swoop_downleft.svg'
 
 const SwoopTop = styled.div`
   ${tw`absolute w-full pin-l mb-0`}
@@ -40,21 +39,11 @@ const SwoopBottom = styled.div`
   z-index: 9 !important;
 `
 
-// const SwoopBottomLeft = styled.div`
-//   ${tw`absolute w-full pin-l mb-0`}
-//   background: url(${swoopBottomLeft}) no-repeat;
-//   background-size: 2045px 240px;
-//   background-position: 50%;
-//   height: 240px;
-//   bottom: -40px;
-//   content: '';
-//   z-index: 0 !important;
-// `
 
 const Wave = ({ position, direction }) => (
   <>
-    { position === 'top' ? 
-      (direction === 'right') ? <SwoopTop /> : <SwoopTopLeft /> 
+    { position === 'top' ?
+      (direction === 'right') ? <SwoopTop /> : <SwoopTopLeft />
       :
       (direction === 'right') ? <SwoopBottom /> : <SwoopBottomLeft />
     }

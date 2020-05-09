@@ -8,6 +8,7 @@ import config from 'react-reveal/globals'
 import Helmet from './Helmet'
 // Styles
 import colors from '../../colors'
+import '../style/main.scss'
 import 'typeface-poppins'
 
 const GlobalStyle = createGlobalStyle`

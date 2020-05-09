@@ -11,12 +11,11 @@ import Logo from './Logo/icon.svg'
 const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
 
 const HeaderContainer = styled(Headroom)`
-  ${tw`absolute w-full`};
+  ${tw`absolute w-full z-99`};
   .headroom--pinned {
     background: ${props => props.theme.colors.primaryDark};
     box-shadow: 0 1px 2px rgba(0,0,0,0.75);
   }
-  z-index: 99999;
 `
 
 const formatLinks = allLinks => Object.entries(allLinks).reduce(
