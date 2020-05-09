@@ -3,17 +3,13 @@ import { Box, Flex } from 'rebass'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Section from '../components/Section'
 
 const Content = styled(Box)`
   .text-content {
     ol {
       margin-block-start: 0 !important;
-      margin-bottom: 1.5rem;
-      li {
-        margin: 0.5rem 0;
-      }
     }
   }
 `
@@ -24,7 +20,7 @@ const Contribute = () => (
       query={contributeQuery}
       render={data => {
         const { title } = data.mdx.frontmatter
-        const content = data.mdx.code.body
+        const content = data.mdx.body
         return (
           <>
             <Section.Header name={title} />
@@ -48,9 +44,7 @@ const contributeQuery = graphql`
       frontmatter {
         title
       }
-      code {
-        body
-      }
+      body
     }
   }
 `

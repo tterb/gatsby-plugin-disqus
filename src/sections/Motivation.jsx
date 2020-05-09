@@ -4,7 +4,7 @@ import Image from 'gatsby-image'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
 import Fade from 'react-reveal/Fade'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Section from '../components/Section'
 import Wave from '../components/Wave'
 
@@ -41,7 +41,7 @@ const Motivation = () => (
       query={motivationQuery}
       render={data => {
         const { title } = data.mdx.frontmatter
-        const content = data.mdx.code.body
+        const content = data.mdx.body
         const logo = data.logo.childImageSharp.fluid
         return (
           <>
@@ -72,9 +72,7 @@ const motivationQuery = graphql`
       frontmatter {
         title
       }
-      code {
-        body
-      }
+      body
     }
     logo: file(relativePath: {eq: "logo.png"}) {
       childImageSharp {

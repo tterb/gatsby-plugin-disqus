@@ -2,7 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import { Box, Flex } from 'rebass'
 import Fade from 'react-reveal/Fade'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 // Components
 import Section from '../components/Section'
 import Wave from '../components/Wave'
@@ -14,7 +14,7 @@ const Usage = () => (
       query={usageQuery}
       render={data => {
         const { title } = data.mdx.frontmatter
-        const content = data.mdx.code.body
+        const content = data.mdx.body
         return (
           <>
             <Section.Header name={title} />
@@ -39,9 +39,7 @@ const usageQuery = graphql`
       frontmatter {
         title
       }
-      code {
-        body
-      }
+      body
     }
   }
 `
