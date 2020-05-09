@@ -161,7 +161,7 @@ module.exports = {
         tailwind: true,
         // develop: true,
         // printRejected: true,
-        whitelistPatterns: [`pre`, `code`, `token`, `namespace`],
+        whitelist: [`pre`, `code`, `token`, `namespace`],
       },
     },
     {
