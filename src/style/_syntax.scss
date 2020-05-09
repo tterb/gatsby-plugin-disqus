@@ -38,6 +38,11 @@ $syntax-color-added: $yellow;
 $syntax-color-modified: $orange;
 $syntax-color-removed: $red;
 
+pre code {
+  margin-left: 0.75%;
+  padding: 1.15rem 1.4rem 1.25rem 1.25rem;
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
 	color: $lighter-gray;
