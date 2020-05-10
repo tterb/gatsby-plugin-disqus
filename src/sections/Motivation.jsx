@@ -14,11 +14,11 @@ const Wrapper = styled.div`
 `
 
 const Contents = styled.div`
-  ${tw`flex w-3/5 justify-start items-start flex-wrap`}
+  ${tw`flex w-full md:w-3/5 justify-start items-start flex-wrap`}
 `
 
 const ImgWrapper = styled.div`
-  ${tw`flex w-1/3 h-auto justify-end items-end flex-wrap mt-0 mx-auto mr-0`};
+  ${tw`w-1/3 h-auto justify-end items-end flex-wrap mt-20 hidden md:flex mx-auto mr-0`};
 `
 
 const LogoImg = styled(Image)`

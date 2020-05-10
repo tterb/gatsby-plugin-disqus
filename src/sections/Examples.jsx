@@ -18,8 +18,9 @@ const CARD_HEIGHT = '200px'
 const MEDIA_QUERY_SMALL = '@media (max-width: 400px)'
 
 const TextContainer = styled.div`
-  ${tw`flex flex-col text-base w-full p-3 pl-6 pr-0`}
+  ${tw`flex flex-col text-base w-full py-5 lg:py-3 pl-6 pr-0`}
   width: calc(100% - ${CARD_HEIGHT});
+  min-width: 200px;
   ${MEDIA_QUERY_SMALL} {
     width: calc(100% - (${CARD_HEIGHT} / 2));
   }
@@ -66,7 +67,7 @@ const ExampleTag = styled.div`
   ${tw`relative`}
   height: ${CARD_HEIGHT};
   top: calc(
-    -${CARD_HEIGHT} - 3.5px
+    -${CARD_HEIGHT} + 2px
   ); /*don't know why I have to add 3.5px here ... */
   ${MEDIA_QUERY_SMALL} {
     top: calc(-${CARD_HEIGHT} - 3.5px + (${CARD_HEIGHT} / 4));

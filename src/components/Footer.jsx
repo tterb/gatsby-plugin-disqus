@@ -21,7 +21,7 @@ const Swoop = styled.div`
   background-position: 50%;
   content: "";
   height: 120px;
-  top: -120px;
+  top: -119px;
 `
 
 const ResponsiveLogo = styled.img`
