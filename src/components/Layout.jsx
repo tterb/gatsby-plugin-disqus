@@ -5,10 +5,12 @@ import { ScrollingProvider } from 'react-scroll-section'
 import config from 'react-reveal/globals'
 // Components
 import Helmet from './Helmet'
+// Fonts
+import 'typeface-poppins'
 // Styles
 import colors from '../../colors'
 import '../style/main.scss'
-import 'typeface-poppins'
+import '../style/syntax.scss'
 
 const GlobalStyle = createGlobalStyle`
   *,
