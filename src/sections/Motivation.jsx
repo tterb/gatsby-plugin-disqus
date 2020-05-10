@@ -54,7 +54,7 @@ const Motivation = () => (
               </Contents>
               <ImgWrapper>
                 <Fade right>
-                  <LogoImg fluid={logo} alt='logo' />
+                  <LogoImg fluid={logo.childImageSharp.fluid} alt='logo' />
                 </Fade>
               </ImgWrapper>
               <Wave />
@@ -76,8 +76,8 @@ const motivationQuery = graphql`
     }
     logo: file(relativePath: {eq: "logo.png"}) {
       childImageSharp {
-        fluid(quality: 90) {
-          ...GatsbyImageSharpFluid
+        fluid(maxWidth: 900, quality: 90) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
     }
