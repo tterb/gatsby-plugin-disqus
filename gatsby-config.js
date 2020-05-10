@@ -159,9 +159,10 @@ module.exports = {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         tailwind: true,
-        // develop: true,
-        // printRejected: true,
-        whitelist: [`pre`, `code`, `token`, `namespace`],
+        develop: true,
+        printRejected: true,
+        ignore: ['src/style/syntax.scss'],
+        whitelist: [`pre`, `code`],
       },
     },
     {
