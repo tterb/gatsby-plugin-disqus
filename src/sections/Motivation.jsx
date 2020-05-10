@@ -54,7 +54,7 @@ const Motivation = () => (
               </Contents>
               <ImgWrapper>
                 <Fade right>
-                  <LogoImg fluid={logo.childImageSharp.fluid} alt='logo' />
+                  <LogoImg fluid={logo} alt='logo' />
                 </Fade>
               </ImgWrapper>
               <Wave />
