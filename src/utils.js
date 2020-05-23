@@ -44,15 +44,14 @@ export function isReactElement(element) {
             React.isValidElement(value)
         )
     }
-    return false;
+    return false
 }
 
 export function shallowComparison(currentProps, nextProps) {
     // Perform a comparison of all props, excluding React Elements, to prevent unnecessary updates
-    const propNames = new Set(Object.keys(currentProps), Object.keys(nextProps))
-    for (const name of propNames) {
-        if (currentProps[name] !== nextProps[name] && !isReactElement(currentProps[name]))
-            return true
-    }
-    return false
+    const propNames = new Set(Object.keys(currentProps).concat(Object.keys(nextProps)))
+    const changes = [].concat(...propNames).filter((name) => (
+        currentProps[name] !== nextProps[name] && !isReactElement(currentProps[name])
+    ))
+    return changes.length !== 0
 }
