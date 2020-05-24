@@ -65,7 +65,7 @@ Additional information on all available parameters can be found on the [wiki](ht
 
 ## Contributing  
 
-  1. Make sure you have `yarn` installed.
+  1. Make sure you have [`yarn`](https://yarnpkg.com/) installed.
   2. Create a new folder for your yarn workspace. `mkdir gatsby-disqus-workspace`
   3. Inside your workspace folder, clone this repo.
   4. `cd` into `gatsby-disqus-workspace/gatsby-plugin-disqus/` and run `yarn && yarn watch`. *Leave this terminal window open.*
