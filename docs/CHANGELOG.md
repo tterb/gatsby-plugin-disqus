@@ -1,6 +1,6 @@
 # Changelog  
 
-## Version 1.1.5  
+## Version 1.1.6  
 
   * Added 'language' prop for multi-lingual websites (#10)  
   * Improved component prop shallow-comparison functionality  
@@ -11,7 +11,7 @@
 
 ## Version 1.1.4  
 
-  * Fix npm publishing issue
+  * Fixed npm publishing issue
 
 --------------------------------  
 
