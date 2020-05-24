@@ -1,5 +1,14 @@
 # Changelog  
 
+## Version 1.1.5  
+
+  * Added 'language' prop for multi-lingual websites (#10)  
+  * Improved component prop shallow-comparison functionality  
+  * Fixed vulnerabilities in nested dependencies  
+  * Added additional eslint lint-rules  
+
+--------------------------------  
+
 ## Version 1.1.4  
 
   * Fix npm publishing issue
