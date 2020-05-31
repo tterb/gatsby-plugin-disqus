@@ -1,5 +1,11 @@
 # Changelog  
 
+## Version 1.1.7  
+
+  * Added `@babel/plugin-transform-spread` to babel config  
+
+--------------------------------  
+
 ## Version 1.1.6  
 
   * Added 'language' prop for multi-lingual websites (#10)  
