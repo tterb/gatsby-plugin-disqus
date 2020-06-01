@@ -10,7 +10,7 @@ import { Twitter } from 'styled-icons/boxicons-logos/Twitter'
 import { Envelope } from 'styled-icons/boxicons-solid/Envelope'
 
 const Links = styled.div`
-  ${tw`flex justify-start items-start flex-wrap`}
+  ${tw`flex justify-start items-start flex-wrap mt-4`}
   div:nth-child(2) a svg {
     width: 2.1rem;
   }
