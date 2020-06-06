@@ -7,45 +7,46 @@ export default class Disqus extends React.Component {
   constructor(props) {
     super(props)
     this.shortname = (typeof GATSBY_DISQUS_SHORTNAME !== `undefined` && GATSBY_DISQUS_SHORTNAME !== '') ? GATSBY_DISQUS_SHORTNAME : ''
-    if(props.config) {
-      this.config = props.config
-    } else {
-      this.config = {
-        identifier: props.identifier,
-        url: props.url,
-        title: props.title,
-        language: props.language,
-      }
-    }
   }
   
   componentDidMount() {
-    if(typeof window !== 'undefined' && window.document && this.shortname) {
+    if(typeof window !== 'undefined' && this.shortname) {
       this.cleanInstance()
     }
     this.loadInstance()
   }
   
   shouldComponentUpdate(nextProps) {
-    if (this.props === nextProps)
+    if (this.props === nextProps) {
       return false
+    }
     return shallowComparison(this.props, nextProps)
   }
   
   componentDidUpdate() {
     this.loadInstance()
   }
+
+  getDisqusConfig(config) {
+    return function() {
+      this.page.identifier = config.identifier
+      this.page.url = config.url
+      this.page.title = config.title
+      this.page.remote_auth_s3 = config.remoteAuthS3
+      this.page.api_key = config.apiKey
+      this.language = config.language
+    }
+  }
   
   loadInstance() {
-    if(typeof window !== 'undefined' && window.document && this.shortname) {
-      let component = this
-      let config = this.config
-      window.disqus_config = function() {
-        this.page.identifier = config.identifier
-        this.page.title = config.title
-        this.page.url = config.url
-        this.language = config.language
-      }
+    if(typeof window !== 'undefined' && window.DISQUS && window.document.getElementById('dsq-embed-scr')) {
+      window.DISQUS.reset({
+        reload: true,
+        config: this.getDisqusConfig(this.props.config),
+      });
+    } else {
+      window.disqus_config = this.getDisqusConfig(this.props.config)
+      window.disqus_shortname = this.shortname
       insertScript(`https://${this.shortname}.disqus.com/embed.js`,
                    'disqus-embed-script', window.document.body)
     }
@@ -105,9 +106,13 @@ Disqus.propTypes = {
      * (If undefined, Disqus will use the default site language)
      */
     language: PropTypes.string,
+    /*
+      The generated payload used to pass Single Sign-On (SSO) user data
+     */
+    remoteAuthS3: PropTypes.string,
+    /*
+     * This is the public API key for your Single Sign-On (SSO) integration
+     */
+    apiKey: PropTypes.string,
   }),
-  identifier: PropTypes.string,
-  title: PropTypes.string,
-  url: PropTypes.string,
-  language: PropTypes.string,
 }
