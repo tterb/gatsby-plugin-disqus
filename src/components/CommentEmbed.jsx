@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 
-export class CommentEmbed extends React.Component {
+export default class CommentEmbed extends React.Component {
 
     getSrc() {
         const RADIX_BASE = 36
