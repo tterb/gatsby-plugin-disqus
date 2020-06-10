@@ -1,5 +1,12 @@
 # Changelog  
 
+## Version 1.2.0  
+
+  * Added `CommentEmbed` component  
+  * Added SSO config parameters  
+
+--------------------------------  
+
 ## Version 1.1.7  
 
   * Added `@babel/plugin-transform-spread` to babel config  
