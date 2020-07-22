@@ -38,6 +38,7 @@ module.exports = {
   pathPrefix: '/gatsby-plugin-disqus',
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-remark-images`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -63,6 +64,13 @@ module.exports = {
       options: {
         name: `content`,
         path: `${__dirname}/content`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `examples`,
+        path: `${__dirname}/content/Examples`,
       },
     },
     {
