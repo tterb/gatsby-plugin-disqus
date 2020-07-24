@@ -22,7 +22,7 @@ const ImgWrapper = styled.div`
 `
 
 const LogoImg = styled(Image)`
-  ${tw`relative w-full mx-auto`}
+  ${tw`relative w-full mt-8 mx-auto`}
   width: 29vw;
   height: 29vw;
   max-width: 320px;

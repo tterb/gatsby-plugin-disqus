@@ -17,8 +17,18 @@ import Wave from '../components/Wave'
 const CARD_HEIGHT = '200px'
 const MEDIA_QUERY_SMALL = '@media (max-width: 400px)'
 
+const ExampleContainer = styled(CardContainer)`
+  > div {
+    margin-right: auto;
+  }
+`
+
+const ExampleCard = styled(Card)`
+  max-width: 500px;
+`
+
 const TextContainer = styled.div`
-  ${tw`flex flex-col text-base w-full py-5 lg:py-3 pl-6 pr-0`}
+  ${tw`flex flex-col text-base w-full py-5 lg:py-4 pl-6 pr-0`}
   width: calc(100% - ${CARD_HEIGHT});
   min-width: 200px;
   ${MEDIA_QUERY_SMALL} {
@@ -27,13 +37,22 @@ const TextContainer = styled.div`
 `
 
 const Title = styled(Text)`
-  ${tw`table text-2xl font-semibold tracking-tight uppercase no-underline mt-1 pb-0`}
-  border-bottom: ${props => props.theme.colors.primary} 5px solid;
+  ${tw`table text-2xl font-semibold tracking-tight uppercase no-underline mt-1 pb-1`}
+  /* border-bottom: ${props => props.theme.colors.primary} 5px solid; */
   a {
     color: rgba(0,0,0,0.75);
     text-decoration: none;
     &:hover {
-      color: ${props => props.theme.colors.primary};
+      &::after {
+        width: 110%;
+        height: 135%;
+        bottom: -4px;
+      }
+      /* color: ${props => props.theme.colors.primary}; */
+    }
+    &::after {
+      height: 5px;
+      bottom: -6px;
     }
   }
 `
@@ -98,11 +117,11 @@ const Example = ({
   tag,
   logo,
 }) => (
-  <Card p={0}>
+  <ExampleCard p={0}>
     <Flex style={{ height: CARD_HEIGHT }}>
       <TextContainer>
         <span>
-          <Title my={2}>
+          <Title className='text-content' my={2}>
             <a href={projectUrl} target='_blank' rel='noopener noreferrer'>{title}</a>
           </Title>
         </span>
@@ -116,7 +135,7 @@ const Example = ({
         <ExampleTag>
           <Flex style={{ float: 'right' }}>
             { repoUrl ? (
-              <Box mx={1} fontSize={5}>
+              <Box mt={1} mx={1} fontSize={5}>
                 <SocialLink mt={-1} fontSize={[3, 4, 4]}>
                   <IconLink href={repoUrl} target='_blank' rel='noopener noreferrer'>
                     <Github title='GitHub' />
@@ -125,7 +144,7 @@ const Example = ({
               </Box>
             ) : '' }
             { projectUrl ? (
-              <Box mx={1} fontSize={5}>
+              <Box mt={1} mx={1} fontSize={5}>
                 <SocialLink mt={-1} mr={3} fontSize={[3, 4, 4]}>
                   <IconLink href={projectUrl} target='_blank' rel='noopener noreferrer'>
                     <Globe title='Website' />
@@ -146,7 +165,7 @@ const Example = ({
         </ExampleTag>
       </ImageContainer>
     </Flex>
-  </Card>
+  </ExampleCard>
 )
 
 Example.propTypes = {
@@ -166,13 +185,13 @@ const Examples = () => (
       render={(data => {
         const examples = data.allMdx.edges
         return (
-          <CardContainer minWidth='350px'>
+          <ExampleContainer minWidth='410px'>
             {examples.map(({ node }, index) => (
               <Fade bottom delay={index * 200}>
                 <Example key={node.title} {...node.frontmatter} />
               </Fade>
             ))}
-          </CardContainer>
+          </ExampleContainer>
         )
       })}
     />
