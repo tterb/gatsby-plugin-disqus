@@ -7,12 +7,10 @@ export default class Disqus extends React.Component {
   constructor(props) {
     super(props)
     this.shortname = (typeof GATSBY_DISQUS_SHORTNAME !== `undefined` && GATSBY_DISQUS_SHORTNAME !== '') ? GATSBY_DISQUS_SHORTNAME : ''
+    this.embedUrl = `https://${this.shortname}.disqus.com/embed.js`
   }
   
   componentDidMount() {
-    if(typeof window !== 'undefined' && this.shortname) {
-      this.cleanInstance()
-    }
     this.loadInstance()
   }
   
@@ -27,6 +25,10 @@ export default class Disqus extends React.Component {
     this.loadInstance()
   }
 
+  componentWillUnmount() {
+    this.cleanInstance()
+  }
+
   getDisqusConfig(config) {
     return function() {
       this.page.identifier = config.identifier
@@ -39,34 +41,43 @@ export default class Disqus extends React.Component {
   }
   
   loadInstance() {
-    if(typeof window !== 'undefined' && window.DISQUS && window.document.getElementById('dsq-embed-scr')) {
-      window.DISQUS.reset({
-        reload: true,
-        config: this.getDisqusConfig(this.props.config),
-      });
-    } else {
+    if (typeof window !== 'undefined' && window.document) {
       window.disqus_config = this.getDisqusConfig(this.props.config)
-      window.disqus_shortname = this.shortname
-      insertScript(`https://${this.shortname}.disqus.com/embed.js`,
-                   'disqus-embed-script', window.document.body)
+      if (window.document.getElementById('dsq-embed-scr')) {
+        this.reloadInstance()
+      } else {
+        insertScript(this.embedUrl, 'dsq-embed-scr', window.document.body)
+      }
     }
   }
   
-  cleanInstance() {
-    removeScript('disqus-embed-script', window.document.body)
-    if(window && window.DISQUS) {
-      window.DISQUS.reset()
+  reloadInstance() {
+    if (window && window.DISQUS) {
+      window.DISQUS.reset({
+        reload: true,
+      })
     }
+  }
+
+  cleanInstance() {
+    removeScript('dsq-embed-scr', window.document.body)
     try {
       delete window.DISQUS
-    } catch(error) {
+    } catch (error) {
       window.DISQUS = undefined
     }
     const thread = window.document.getElementById('disqus_thread')
-    if(thread) {
-      while(thread.hasChildNodes()) {
+    if (thread) {
+      while (thread.hasChildNodes()) {
         thread.removeChild(thread.firstChild)
       }
+    }
+    // Retrieve and remove the sidebar iframe
+    const iframeQuery = window.document.querySelector('[id^="dsq-app"]')
+    debugger;
+    if (iframeQuery) {
+      const iframe = window.document.getElementById(window.document.querySelector('[id^="dsq-app"]').id)
+      iframe.parentNode.removeChild(iframe)
     }
   }
 
