@@ -1,6 +1,6 @@
 # Changelog  
 
-## Version 1.2.1  
+## Version 1.2.2  
 
   * Modified `Disqus` component to better utilize `DISQUS.reset()`  
   * Improved shallow-comparison function to recursively handle nested objects  
