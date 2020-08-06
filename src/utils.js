@@ -37,21 +37,26 @@ export function debounce(func, wait, runOnFirstCall) {
 }
 
 export function isReactElement(element) {
-    if (React.isValidElement(element)) {
-        return true
-    } else if (Array.isArray(element)) {
-        return element.some((value) =>
-            React.isValidElement(value)
-        )
-    }
-    return false
+  if (React.isValidElement(element)) {
+    return true
+  } else if (Array.isArray(element)) {
+    return element.some((value) => React.isValidElement(value))
+  }
+  return false
 }
 
 export function shallowComparison(currentProps, nextProps) {
-    // Perform a comparison of all props, excluding React Elements, to prevent unnecessary updates
-    const propNames = new Set(Object.keys(currentProps).concat(Object.keys(nextProps)))
-    const changes = [].concat(...propNames).filter((name) => (
-        currentProps[name] !== nextProps[name] && !isReactElement(currentProps[name])
-    ))
-    return changes.length !== 0
+  // Perform a comparison of all props, excluding React Elements, to prevent
+  // unnecessary updates
+  const propNames = new Set(Object.keys(currentProps).concat(Object.keys(nextProps)))
+  const changes = [].concat(...propNames).filter((name) => {
+    if (typeof currentProps[name] === 'object') {
+      if (shallowComparison(currentProps[name], nextProps[name])) {
+        return true
+      }
+    } else if (currentProps[name] !== nextProps[name] && !isReactElement(currentProps[name])) {
+      return true
+    }
+  })
+  return changes.length !== 0
 }

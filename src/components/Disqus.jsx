@@ -74,7 +74,6 @@ export default class Disqus extends React.Component {
     }
     // Retrieve and remove the sidebar iframe
     const iframeQuery = window.document.querySelector('[id^="dsq-app"]')
-    debugger;
     if (iframeQuery) {
       const iframe = window.document.getElementById(window.document.querySelector('[id^="dsq-app"]').id)
       iframe.parentNode.removeChild(iframe)
