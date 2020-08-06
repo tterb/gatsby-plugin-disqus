@@ -1,5 +1,13 @@
 # Changelog  
 
+## Version 1.2.1  
+
+  * Modified `Disqus` component to better utilize `DISQUS.reset()`  
+  * Improved shallow-comparison function to recursively handle nested objects  
+  * Bump lodash from 4.17.15 to 4.17.19  
+
+--------------------------------  
+
 ## Version 1.2.0  
 
   * Added `CommentEmbed` component  
