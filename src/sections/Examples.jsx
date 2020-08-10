@@ -1,6 +1,7 @@
 import React from 'react'
-import { Image, Text, Flex, Box, Link } from 'rebass'
+import { Text, Flex, Box, Link } from 'rebass'
 import { StaticQuery, graphql } from 'gatsby'
+import Image from 'gatsby-image'
 import tw from 'tailwind.macro'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -38,7 +39,6 @@ const TextContainer = styled.div`
 
 const Title = styled(Text)`
   ${tw`table text-2xl font-semibold tracking-tight uppercase no-underline mt-1 pb-1`}
-  /* border-bottom: ${props => props.theme.colors.primary} 5px solid; */
   a {
     color: rgba(0,0,0,0.75);
     text-decoration: none;
@@ -48,7 +48,6 @@ const Title = styled(Text)`
         height: 135%;
         bottom: -4px;
       }
-      /* color: ${props => props.theme.colors.primary}; */
     }
     &::after {
       height: 5px;
@@ -70,8 +69,8 @@ const ImageContainer = styled.div`
   }
 `
 
-const ExampleImage = styled(Image)`
-  ${tw`mt-0 p-12`}
+const ImageWrapper = styled.div`
+  ${tw`mt-0 p-10`}
   width: ${CARD_HEIGHT};
   height: ${CARD_HEIGHT};
   ${MEDIA_QUERY_SMALL} {
@@ -80,6 +79,10 @@ const ExampleImage = styled(Image)`
     margin-top: calc(${CARD_HEIGHT} / 4);
     padding: 10px;
   }
+`
+
+const ExampleImage = styled(Image)`
+  ${tw`w-full h-full m-0`}
 `
 
 const ExampleTag = styled.div`
@@ -131,7 +134,9 @@ const Example = ({
       </TextContainer>
 
       <ImageContainer>
-        <ExampleImage src={logo.childImageSharp.resize.src} alt={title} />
+        <ImageWrapper>
+          <ExampleImage fluid={logo.childImageSharp.fluid} alt={title} />
+        </ImageWrapper>
         <ExampleTag>
           <Flex style={{ float: 'right' }}>
             { repoUrl ? (
@@ -212,11 +217,8 @@ const examplesQuery = graphql`
             tag
             logo {
               childImageSharp {
-                fluid(maxWidth: 480, quality: 70) {
+                fluid(maxWidth: 240) {
                   ...GatsbyImageSharpFluid_withWebp
-                }
-                resize(width: 200) {
-                  src
                 }
               }
             }
