@@ -21,7 +21,7 @@
     "arrow-body-style": ["error", "as-needed"],
     "arrow-parens": "off",
     "class-methods-use-this": "off",
-    "comma-dangle": ["warn", "always"],
+    "comma-dangle": ["warn", "always-multiline"],
     "consistent-return": "warn",
     "curly": ["warn", "all"],
     "func-names": "off",
@@ -33,16 +33,11 @@
     "import/no-extraneous-dependencies": "off",
     "import/order": "warn",
     "import/prefer-default-export": "off",
-    "indent": [
-      "error", 4, {
-        "SwitchCase": "error",
-        "ignoredNodes": ["JSXElement *"]
-      }
-    ],
+    "indent": ["error", 4],
     "key-spacing": "off",
     "linebreak-style": "off",
     "max-len": [
-      "warn", { 
+      "warn", {
         "code": 120,
         "ignoreComments": true,
         "ignorePattern": "(\\${tw\\`(.*)\\`}$|src\\:(.*))",
@@ -62,24 +57,24 @@
     "no-undef": "off",
     "no-underscore-dangle": "warn",
     "no-unused-expressions": [
-      "warn", { 
+      "warn", {
         "allowTaggedTemplates": true
       }
     ],
     "no-unused-vars": [
-      "warn", { 
+      "warn", {
         "argsIgnorePattern": "res|next|stage|^err|on|config"
       }
     ],
     "no-use-before-define": "off",
     "nonblock-statement-body-position": "off",
     "object-curly-newline": "off",
-    "operator-linebreak": [ 
-      "warn", "after", { 
-        "overrides": { 
+    "operator-linebreak": [
+      "warn", "after", {
+        "overrides": {
           "?": "ignore",
-          ":": "ignore" 
-        } 
+          ":": "ignore"
+        }
       }
     ],
     "padded-blocks": "off",
@@ -90,16 +85,16 @@
         "allowTemplateLiterals": true
       }
     ],
-    "semi": "off",
-    "space-after-keywords": ["warn", "never"],
+    "semi": "error",
+    "keyword-spacing": ["warn", "never"],
     "space-before-function-paren": "off",
     "jsx-quotes": ["error", "prefer-single"],
-  
+
     // JSX-a11y
     "jsx-a11y/accessible-emoji": "off",
     "jsx-a11y/anchor-is-valid": [
-      "warn", { 
-        "aspects": ["invalidHref"] 
+      "warn", {
+        "aspects": ["invalidHref"]
       }
     ],
     "jsx-a11y/href-no-hash": "off",
@@ -116,11 +111,11 @@
       "warn", { "extensions": [".js", ".jsx"] }
     ],
     "react/jsx-first-prop-new-line": "off",
-    "react/jsx-indent": 4,
+    "react/jsx-indent": ["error", 4],
     "react/jsx-indent-props": "off",
     "react/jsx-max-props-per-line": [
       "warn", {
-        "maximum": 5 
+        "maximum": 5
       }
     ],
     "react/jsx-no-target-blank": "error",
