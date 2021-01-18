@@ -100,42 +100,63 @@ export default class Disqus extends React.Component {
 
 Disqus.propTypes = {
     config: PropTypes.shape({
-    /*
-     * Tells the Disqus service how to identify the current page.
-     * When the Disqus embed is loaded, the identifier is used to look up
-     * the correct thread.
-     */
+        /**
+        * Tells the Disqus service how to identify the current page.
+        * When the Disqus embed is loaded, the identifier is used to look up
+        * the correct thread.
+        */
         identifier: PropTypes.string,
-        /*
-     * Tells the Disqus service the title of the current page.
-     * This is used when creating the thread on Disqus.
-     */
+        /**
+        * Tells the Disqus service the title of the current page.
+        * This is used when creating the thread on Disqus.
+        */
         title: PropTypes.string,
-        /*
-     * Tells the Disqus service the URL of the current page.
-     * This URL is used when a thread is created so that Disqus knows which
-     * page a thread belongs to.
-     * (If undefined, Disqus will use the global.location.href)
-     */
+        /**
+        * Tells the Disqus service the URL of the current page.
+        * This URL is used when a thread is created so that Disqus knows which
+        * page a thread belongs to.
+        * (If undefined, Disqus will use the global.location.href)
+        */
         url: PropTypes.string,
-        /*
-     * Tells the Disqus service to override the default site language for the
-     * current page.
-     * This allows for dynamically loading the Disqus embed in different
-     * languages on a per-page basis.
-     * (If undefined, Disqus will use the default site language)
-     */
+        /**
+        * Tells the Disqus service to override the default site language for the
+        * current page.
+        * This allows for dynamically loading the Disqus embed in different
+        * languages on a per-page basis.
+        * (If undefined, Disqus will use the default site language)
+        */
         language: PropTypes.string,
-        /*
-      The generated payload used to pass Single Sign-On (SSO) user data
-     */
+        /**
+        The generated payload used to pass Single Sign-On (SSO) user data
+        */
         remoteAuthS3: PropTypes.string,
-        /*
-     * This is the public API key for your Single Sign-On (SSO) integration
-     */
+        /**
+        * This is the public API key for your Single Sign-On (SSO) integration
+        */
         apiKey: PropTypes.string,
     }),
+    /** 
+     * CALLBACKS:
+     * Many of these callbacks are not officially supported, but are still present 
+     * in the Disqus `embed.js` config.
+     */ 
+    afterRender: PropTypes.func,
+    /**
+     * This callback function is executed before a new comment is submitted on the 
+     * current comment thread, though it's usage is not officially supported.
+     */
     beforeComment: PropTypes.func,
+    onIdentify: PropTypes.func,
+    onInit: PropTypes.func,
+    /**
+     * This callback function is executed when a new comment is submitted on the 
+     * current comment thread. It accepts one `comment` parameter, which is a 
+     * Javascript object containing `id` and `text` attributes.
+     */
     onNewComment: PropTypes.func,
     onPaginate: PropTypes.func,
+    onReady: PropTypes.func,
+    preData: PropTypes.func,
+    preInit: PropTypes.func,
+    preReset: PropTypes.func,
 }
