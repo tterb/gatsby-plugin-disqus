@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { insertScript, removeScript, shallowComparison } from '../utils';
+import { EMBED_ID, CALLBACK_OPTIONS } from '../constants';
 
 export default class Disqus extends React.Component {
 
@@ -37,16 +38,25 @@ export default class Disqus extends React.Component {
             this.page.remote_auth_s3 = config.remoteAuthS3;
             this.page.api_key = config.apiKey;
             this.language = config.language;
+            this.callbacks = getCallbacks();
         };
+    }
+
+    getCallbacks() {
+        const callbacks = {};
+        CALLBACK_OPTIONS.forEach(key => {
+            callback[key] = this.props[key];
+        });
+        return callbacks;
     }
 
     loadInstance() {
         if (typeof window !== 'undefined' && window.document) {
             window.disqus_config = this.getDisqusConfig(this.props.config);
-            if (window.document.getElementById('dsq-embed-scr')) {
+            if (window.document.getElementById(EMBED_ID)) {
                 this.reloadInstance();
             } else {
-                insertScript(this.embedUrl, 'dsq-embed-scr', window.document.body);
+                insertScript(this.embedUrl, EMBED_ID, window.document.body);
             }
         }
     }
@@ -60,7 +70,7 @@ export default class Disqus extends React.Component {
     }
 
     cleanInstance() {
-        removeScript('dsq-embed-scr', window.document.body);
+        removeScript(EMBED_ID, window.document.body);
         try {
             delete window.DISQUS;
         } catch (error) {
@@ -125,4 +135,7 @@ Disqus.propTypes = {
      */
         apiKey: PropTypes.string,
     }),
-};
+    beforeComment: PropTypes.func,
+    onNewComment: PropTypes.func,
+    onPaginate: PropTypes.func,
+}
