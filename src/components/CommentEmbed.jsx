@@ -48,7 +48,7 @@ CommentEmbed.propTypes = {
      */
     height: PropTypes.number,
     /*
-     * Determines whether the embedded comment should include or omit media from 
+     * Determines whether the embedded comment should include or omit media from
      * within the original comment.
      */
     showMedia: PropTypes.bool,
