@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { insertScript, removeScript, debounce, shallowComparison } from '../utils';
+import { COMMENT_COUNT_ID } from '../constants';
 
 
 const queueResetCount = debounce(() => {
@@ -36,19 +37,19 @@ export default class CommentCount extends React.Component {
     }
 
   loadInstance() {
-    if(window.document.getElementById('dsq-count-scr')) {
+    if(window.document.getElementById(COMMENT_COUNT_ID)) {
         queueResetCount();
     } else {
         insertScript(
             `https://${this.shortname}.disqus.com/count.js`,
-            'dsq-count-scr',
+            COMMENT_COUNT_ID,
             window.document.body
         );
     }
   }
 
     cleanInstance() {
-        removeScript('dsq-count-scr', window.document.body);
+        removeScript(COMMENT_COUNT_ID, window.document.body);
         window.DISQUSWIDGETS = undefined;
     }
 
