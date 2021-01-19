@@ -31,7 +31,10 @@ export default class Disqus extends React.Component {
         this.cleanInstance();
     }
 
-    getDisqusConfig(config) {
+    getDisqusConfig() {
+        const config = this.props.config;
+        const callbacks = this.props.callbacks;
+        // const callbacks = this.getCallbacks();
         return function() {
             this.page.identifier = config.identifier;
             this.page.url = config.url;
@@ -39,21 +42,16 @@ export default class Disqus extends React.Component {
             this.page.remote_auth_s3 = config.remoteAuthS3;
             this.page.api_key = config.apiKey;
             this.language = config.language;
-            this.callbacks = getCallbacks();
-        };
-    }
 
-    getCallbacks() {
-        const callbacks = {};
-        CALLBACK_OPTIONS.forEach(key => {
-            callback[key] = this.props[key];
-        });
-        return callbacks;
+            CALLBACK_OPTIONS.forEach(key => {
+                this.callbacks[key] = [callbacks[key]];
+            });
+        };
     }
 
     loadInstance() {
         if (typeof window !== 'undefined' && window.document) {
-            window.disqus_config = this.getDisqusConfig(this.props.config);
+            window.disqus_config = this.getDisqusConfig();
             if (window.document.getElementById(EMBED_ID)) {
                 this.reloadInstance();
             } else {
@@ -141,48 +139,49 @@ Disqus.propTypes = {
      * Many of these callbacks are not officially supported, but are still present
      * in the Disqus `embed.js` config.
      */
-
-    /**
-     * This callback function is executed after the template is rendered, before
-     * the comment section is displayed to the user.
-     */
-    afterRender: PropTypes.func,
-    /**
-     * This callback function is executed before a new comment is submitted on the
-     * current comment thread, though it's usage is not officially supported.
-     */
-    beforeComment: PropTypes.func,
-    /**
-     * This callback function is executed after all dependencies are resolved,
-     * before the comment section template is rendered.
-     */
-    onInit: PropTypes.func,
-    /**
-     * This callback function is executed when a new comment is submitted on the
-     * current comment thread. It accepts one `comment` parameter, which is a
-     * Javascript object containing `id` and `text` attributes.
-     */
-    onNewComment: PropTypes.func,
-    /**
-     * This callback function is executed when the comment section finishes
-     * loading.
-     */
-    onReady: PropTypes.func,
-    /**
-     * This callback function is executed right before the inital comment section
-     * data is requested.
-     */
-    preData: PropTypes.func,
-    /**
-     * This callback function is executed once the inital comment section data is
-     * recieved, before loading the dependencies.
-     */
-    preInit: PropTypes.func,
-    /**
-     * The following callback functions aren't documented or officially supported
-     * but can still be found in the Disqus embed.js config.
-     */
-    onIdentify: PropTypes.func,
-    onPaginate: PropTypes.func,
-    preReset: PropTypes.func,
+    callbacks: PropTypes.shape({
+        /**
+        * This callback function is executed after the template is rendered, before
+        * the comment section is displayed to the user.
+        */
+        afterRender: PropTypes.func,
+        /**
+        * This callback function is executed before a new comment is submitted on the
+        * current comment thread, though it's usage is not officially supported.
+        */
+        beforeComment: PropTypes.func,
+        /**
+        * This callback function is executed after all dependencies are resolved,
+        * before the comment section template is rendered.
+        */
+        onInit: PropTypes.func,
+        /**
+        * This callback function is executed when a new comment is submitted on the
+        * current comment thread. It accepts one `comment` parameter, which is a
+        * Javascript object containing `id` and `text` attributes.
+        */
+        onNewComment: PropTypes.func,
+        /**
+        * This callback function is executed when the comment section finishes
+        * loading.
+        */
+        onReady: PropTypes.func,
+        /**
+        * This callback function is executed right before the initial comment section
+        * data is requested.
+        */
+        preData: PropTypes.func,
+        /**
+        * This callback function is executed once the initial comment section data is
+        * received, before loading the dependencies.
+        */
+        preInit: PropTypes.func,
+        /**
+        * The following callback functions aren't documented or officially supported
+        * but can still be found in the Disqus `embed.js` config.
+        */
+        onIdentify: PropTypes.func,
+        onPaginate: PropTypes.func,
+        preReset: PropTypes.func,
+    }),
 }
