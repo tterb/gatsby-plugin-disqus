@@ -25,7 +25,6 @@
     "lint": "eslint --debug .",
     "test": "jest",
     "watch": "yarn copy-files && babel -w src --out-dir lib --copy-files --ignore **/__tests__",
-    "install-peers": "install-peers",
     "release": "standard-version",
     "npm-publish": "git push --follow-tags origin master && yarn build && cd lib && npm publish && cd ../",
     "dry-run": "./bin/publish-dry-run.sh"
@@ -47,7 +46,6 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.16.0",
-    "install-peers-cli": "^2.2.0",
     "jest": "^24.9.0",
     "prop-types": "^15.6.2",
     "rimraf": "^3.0.2"
