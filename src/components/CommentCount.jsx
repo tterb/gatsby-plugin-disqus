@@ -4,7 +4,7 @@ import { insertScript, removeScript, debounce, shallowComparison } from '../util
 
 
 const queueResetCount = debounce(() => {
-    if(window.DISQUSWIDGETS) {
+    if (window.DISQUSWIDGETS) {
         window.DISQUSWIDGETS.getCount({ reset: true });
     }
 }, 300, false);
@@ -36,7 +36,7 @@ export default class CommentCount extends React.Component {
     }
 
     loadInstance() {
-        if(window.document.getElementById('dsq-count-scr')) {
+        if (window.document.getElementById('dsq-count-scr')) {
             queueResetCount();
         } else {
             insertScript(
