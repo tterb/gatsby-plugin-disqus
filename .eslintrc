@@ -33,6 +33,7 @@
     "import/no-extraneous-dependencies": "off",
     "import/order": "warn",
     "import/prefer-default-export": "off",
+    "import/newline-after-import": ["error", { "count": 2 }],
     "indent": ["error", 4],
     "key-spacing": "off",
     "linebreak-style": "off",
@@ -86,7 +87,7 @@
       }
     ],
     "semi": "error",
-    "keyword-spacing": ["warn", "never"],
+    "keyword-spacing": "error",
     "space-before-function-paren": "off",
     "jsx-quotes": ["error", "prefer-single"],
 

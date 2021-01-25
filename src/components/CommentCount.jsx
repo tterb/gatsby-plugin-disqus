@@ -4,7 +4,7 @@ import { insertScript, removeScript, debounce, shallowComparison } from '../util
 
 
 const queueResetCount = debounce(() => {
-    if(window.DISQUSWIDGETS) {
+    if (window.DISQUSWIDGETS) {
         window.DISQUSWIDGETS.getCount({ reset: true });
     }
 }, 300, false);
@@ -35,17 +35,17 @@ export default class CommentCount extends React.Component {
         this.cleanInstance();
     }
 
-  loadInstance() {
-    if(window.document.getElementById('dsq-count-scr')) {
-        queueResetCount();
-    } else {
-        insertScript(
-            `https://${this.shortname}.disqus.com/count.js`,
-            'dsq-count-scr',
-            window.document.body
-        );
+    loadInstance() {
+        if (window.document.getElementById('dsq-count-scr')) {
+            queueResetCount();
+        } else {
+            insertScript(
+                `https://${this.shortname}.disqus.com/count.js`,
+                'dsq-count-scr',
+                window.document.body
+            );
+        }
     }
-  }
 
     cleanInstance() {
         removeScript('dsq-count-scr', window.document.body);
@@ -53,11 +53,15 @@ export default class CommentCount extends React.Component {
     }
 
     render() {
-        let { config, placeholder, ...props } = this.props;
+        const { config, className, placeholder, ...props } = this.props;
+        const componentClass = `disqus-comment-count${className ? ` ${className}` : ''}`;
         return (
-            <span className='disqus-comment-count'
-                    data-disqus-identifier={config.identifier}
-                    data-disqus-url={config.url} {...props}>
+            <span
+                className={componentClass}
+                data-disqus-identifier={config.identifier}
+                data-disqus-url={config.url}
+                {...props}
+            >
                 {placeholder}
             </span>
         );
@@ -93,4 +97,8 @@ CommentCount.propTypes = {
     * loading the response.
     */
     placeholder: PropTypes.string,
+    /*
+    * This allows users to pass a custom class to the comment-count component
+    */
+    className: PropTypes.string,
 };
