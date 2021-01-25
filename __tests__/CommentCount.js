@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 // Components
 import CommentCount from '../src/components/CommentCount.jsx';
 
@@ -17,6 +17,9 @@ const Component = (props) => (
     />
 );
 
+// Cleanup tests to prevent memory leaks
+afterEach(cleanup)
+
 test('Has correct config attributes', () => {
     const { getByTestId } = render(<Component config={disqusConfig} />);
     // Check that the url is set correctly
@@ -25,7 +28,7 @@ test('Has correct config attributes', () => {
     expect(getByTestId('comment-count')).toHaveAttribute('data-disqus-identifier', disqusConfig.identifier);
 });
 
-test('Has the correct classes', () => {
+test('Has correct classes', () => {
     const customClass = 'custom-class';
     const { getByTestId } = render(
         <Component
@@ -33,11 +36,14 @@ test('Has the correct classes', () => {
             className={customClass}
         />
     );
-    expect(getByTestId('comment-count').classList).toContain('disqus-comment-count');
-    expect(getByTestId('comment-count').classList).toContain(customClass);
+    const classList = getByTestId('comment-count').classList
+     // Check for the default class
+    expect(classList).toContain('disqus-comment-count');
+    // Check that the custom class is added
+    expect(classList).toContain(customClass);
 });
 
-test('Has the correct placeholder text', () => {
+test('Displays the correct placeholder text', () => {
     const customPlaceholder = 'hold my place';
     const { getByTestId } = render(
         <Component
@@ -49,10 +55,20 @@ test('Has the correct placeholder text', () => {
 });
 
 test('Inserts the script correctly', () => {
-    const { container } = render(<Component config={disqusConfig} />);
-    const scriptQuery = container.parentNode.querySelectorAll('#dsq-count-scr');
+    const { baseElement } = render(<Component config={disqusConfig} />);
+    const scriptQuery = baseElement.querySelectorAll('#dsq-count-scr');
     // Make sure only one script is inserted
     expect(scriptQuery.length).toEqual(1);
     // Check that the script src is set correctly
     expect(scriptQuery[0].src).toEqual('https://testing.disqus.com/count.js');
+});
+
+test('Cleans script and window attributes on unmount', () => {
+    const { baseElement, unmount } = render(<Component config={disqusConfig} />);
+    unmount()
+    const scriptQuery = baseElement.querySelectorAll('#dsq-count-scr');
+    // Make sure the script is removed
+    expect(scriptQuery.length).toEqual(0);
+    // Make sure window.DISQUSWIDGETS is removed
+    expect(global.window.DISQUSWIDGETS).toBeUndefined();
 });

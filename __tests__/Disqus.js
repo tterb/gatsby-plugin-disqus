@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 // Components
 import Disqus from '../src/components/Disqus.jsx';
 
@@ -17,6 +17,9 @@ const Component = (props) => (
     />
 );
 
+// Cleanup tests to prevent memory leaks
+afterEach(cleanup)
+
 test('Has correct attributes', () => {
     const { getByTestId} = render(<Component config={disqusConfig} />);
     // Check that the correct ID is added
@@ -29,10 +32,20 @@ test('Creates window.disqus_config', () => {
 });
 
 test('Inserts the script correctly', () => {
-    const { container } = render(<Component config={disqusConfig} />);
-    const scriptQuery = container.parentNode.querySelectorAll('#dsq-embed-scr');
+    const { baseElement } = render(<Component config={disqusConfig} />);
+    const scriptQuery = baseElement.querySelectorAll('#dsq-embed-scr');
     // Make sure only one script is inserted
     expect(scriptQuery.length).toEqual(1);
     // Check that the script src is set correctly
     expect(scriptQuery[0].src).toEqual('https://testing.disqus.com/embed.js');
+});
+
+test('Cleans script and window attributes on unmount', () => {
+    const { baseElement, unmount } = render(<Component config={disqusConfig} />);
+    unmount()
+    const scriptQuery = baseElement.querySelectorAll('#dsq-embed-scr');
+    // Make sure the script is removed
+    expect(scriptQuery.length).toEqual(0);
+    // Make sure window.DISQUS is removed
+    expect(global.window.DISQUS).toBeUndefined();
 });
