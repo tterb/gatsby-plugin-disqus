@@ -20,7 +20,7 @@
   "license": "MIT",
   "scripts": {
     "copy-files": "mkdir lib || true && cp .eslintrc readme.md package.json lib",
-    "clean": "rm -r lib",
+    "clean": "rimraf lib",
     "build": "yarn clean && yarn copy-files && babel src --out-dir lib --copy-files --ignore **/__tests__",
     "lint": "eslint --debug .",
     "test": "jest",
@@ -47,7 +47,8 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.16.0",
     "jest": "^24.9.0",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "rimraf": "^3.0.2"
   },
   "peerDependencies": {
     "react": "^16.8.5"
