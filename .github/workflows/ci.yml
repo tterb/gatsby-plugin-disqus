@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: yarn
+    - run: yarn install-peers
     - run: yarn build
       name: Build
     - run: yarn lint
