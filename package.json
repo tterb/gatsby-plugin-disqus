@@ -19,7 +19,7 @@
   "author": "Brett Stevenson <bstevensondev@gmail.com> (https://brettstevenson.io)",
   "license": "MIT",
   "scripts": {
-    "copy-files": "mkdir lib || true && cp .eslintrc readme.md package.json lib",
+    "copy-files": "mkdir lib || true && cp .eslintrc README.md package.json lib",
     "clean": "rimraf lib",
     "build": "yarn clean && yarn copy-files && babel src --out-dir lib --copy-files --ignore **/__tests__",
     "lint": "eslint --debug .",
