@@ -1,11 +1,7 @@
 {
   "presets": [
-    [
-      "babel-preset-gatsby-package",
-      {
-        "browser": true
-      }
-    ]
+    ["babel-preset-gatsby-package", { "browser": true }]
   ],
-  "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-transform-spread"]
+  "plugins": ["@babel/plugin-transform-spread"],
+  "ignore": ["src/__test__/"]
 }
