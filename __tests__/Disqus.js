@@ -18,10 +18,10 @@ const Component = (props) => (
 );
 
 // Cleanup tests to prevent memory leaks
-afterEach(cleanup)
+afterEach(cleanup);
 
 test('Has correct attributes', () => {
-    const { getByTestId} = render(<Component config={disqusConfig} />);
+    const { getByTestId } = render(<Component config={disqusConfig} />);
     // Check that the correct ID is added
     expect(getByTestId('disqus-thread')).toHaveAttribute('id', 'disqus_thread');
 });
@@ -42,7 +42,7 @@ test('Inserts the script correctly', () => {
 
 test('Cleans script and window attributes on unmount', () => {
     const { baseElement, unmount } = render(<Component config={disqusConfig} />);
-    unmount()
+    unmount();
     const scriptQuery = baseElement.querySelectorAll('#dsq-embed-scr');
     // Make sure the script is removed
     expect(scriptQuery.length).toEqual(0);

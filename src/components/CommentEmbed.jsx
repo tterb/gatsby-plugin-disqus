@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 
 export default class CommentEmbed extends React.Component {
@@ -23,6 +23,7 @@ export default class CommentEmbed extends React.Component {
                 seamless='seamless'
                 scrolling='no'
                 frameBorder='0'
+                title='embedded-comment'
                 {...props}
             />
         );
@@ -39,7 +40,7 @@ CommentEmbed.propTypes = {
     /*
      * This is used to determine the comment that gets embeded.
      * The ID can be found in the Disqus moderation panel or as a `data-post-id`
-     *  attribute on the HTML element.
+     * attribute on the HTML element.
      */
     commentId: PropTypes.oneOfType([
         PropTypes.number,
@@ -58,8 +59,8 @@ CommentEmbed.propTypes = {
      * within the original comment.
      */
     showMedia: PropTypes.bool,
-     /*
-     * Determines whether the parent comment should be displayed for nested comments.
+    /*
+     * Determines whether the parent comment should be displayed for * nested comments.
      */
     showParentComment: PropTypes.bool,
 };

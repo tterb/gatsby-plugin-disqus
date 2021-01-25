@@ -10,7 +10,7 @@ const commentConfig = {
     height: 320,
     showMedia: true,
     showParentComment: false,
-    className: 'embedded-comment'
+    className: 'embedded-comment',
 };
 
 const getExpectedSrc = (config) => {
@@ -19,7 +19,7 @@ const getExpectedSrc = (config) => {
     const parentParam = config.showParentComment ? '1' : '0';
     const mediaParam = config.showMedia ? '1' : '0';
     return `https://embed.disqus.com/p/${post}?p=${parentParam}&m=${mediaParam}`;
-}
+};
 
 const Component = (props) => (
     <CommentEmbed
@@ -29,7 +29,7 @@ const Component = (props) => (
 );
 
 // Cleanup tests to prevent memory leaks
-afterEach(cleanup)
+afterEach(cleanup);
 
 test('Has correct attributes', () => {
     const { getByTestId } = render(<Component {...commentConfig} />);

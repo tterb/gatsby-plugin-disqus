@@ -53,10 +53,10 @@ export default class CommentCount extends React.Component {
     }
 
     render() {
-        let { config, className, placeholder, ...props } = this.props;
-        let componentClass = `disqus-comment-count${className ? ` ${className}` : ''}`;
+        const { config, className, placeholder, ...props } = this.props;
+        const componentClass = `disqus-comment-count${className ? ` ${className}` : ''}`;
         return (
-            <span 
+            <span
                 className={componentClass}
                 data-disqus-identifier={config.identifier}
                 data-disqus-url={config.url}

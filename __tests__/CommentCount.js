@@ -18,7 +18,7 @@ const Component = (props) => (
 );
 
 // Cleanup tests to prevent memory leaks
-afterEach(cleanup)
+afterEach(cleanup);
 
 test('Has correct config attributes', () => {
     const { getByTestId } = render(<Component config={disqusConfig} />);
@@ -36,8 +36,8 @@ test('Has correct classes', () => {
             className={customClass}
         />
     );
-    const classList = getByTestId('comment-count').classList
-     // Check for the default class
+    const classList = getByTestId('comment-count').classList;
+    // Check for the default class
     expect(classList).toContain('disqus-comment-count');
     // Check that the custom class is added
     expect(classList).toContain(customClass);
@@ -65,7 +65,7 @@ test('Inserts the script correctly', () => {
 
 test('Cleans script and window attributes on unmount', () => {
     const { baseElement, unmount } = render(<Component config={disqusConfig} />);
-    unmount()
+    unmount();
     const scriptQuery = baseElement.querySelectorAll('#dsq-count-scr');
     // Make sure the script is removed
     expect(scriptQuery.length).toEqual(0);
