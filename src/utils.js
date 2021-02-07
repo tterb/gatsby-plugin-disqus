@@ -12,29 +12,28 @@ export function insertScript(src, id, parent) {
 
 export function removeScript(id, parent) {
     const script = window.document.getElementById(id);
-    if(script) {
+    if (script) {
         parent.removeChild(script);
     }
 }
 
 export function debounce(func, wait, runOnFirstCall) {
     let timeout;
-    return function () {
+    return function (...args) {
         const context = this;
-        const args = arguments;
         const deferredExecution = function () {
             timeout = null;
-            if(!runOnFirstCall) {
+            if (!runOnFirstCall) {
                 func.apply(context, args);
             }
-        }
+        };
         const callNow = runOnFirstCall && !timeout;
         window.clearTimeout(timeout);
         timeout = setTimeout(deferredExecution, wait);
-        if(callNow) {
+        if (callNow) {
             func.apply(context, args);
         }
-    }
+    };
 }
 
 export function isReactElement(element) {
@@ -58,6 +57,7 @@ export function shallowComparison(currentProps, nextProps) {
         } else if (currentProps[name] !== nextProps[name] && !isReactElement(currentProps[name])) {
             return true;
         }
-    })
+        return false;
+    });
     return changes.length !== 0;
 }

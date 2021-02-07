@@ -19,26 +19,46 @@
   "author": "Brett Stevenson <bstevensondev@gmail.com> (https://brettstevenson.io)",
   "license": "MIT",
   "scripts": {
-    "release": "standard-version",
-    "copy-files": "mkdir lib || true && cp .eslintrc readme.md package.json lib",
-    "clean": "rm -r lib",
+    "copy-files": "mkdir lib || true && cp .eslintrc README.md package.json lib",
+    "clean": "rimraf lib",
     "build": "yarn clean && yarn copy-files && babel src --out-dir lib --copy-files --ignore **/__tests__",
+    "lint": "eslint --debug .",
+    "test": "jest",
     "watch": "yarn copy-files && babel -w src --out-dir lib --copy-files --ignore **/__tests__",
-    "npm-publish": "git push --follow-tags origin master && yarn build && cd lib && npm publish && cd ../"
+    "release": "standard-version",
+    "npm-publish": "git push --follow-tags origin master && yarn build && cd lib && npm publish && cd ../",
+    "dry-run": "./bin/publish-dry-run.sh"
   },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.1.2",
     "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-transform-spread": "^7.10.1",
     "@babel/preset-env": "^7.1.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-preset-gatsby-package": "^0.1.2",
+    "@testing-library/jest-dom": "^5.0.0",
+    "@testing-library/react": "^9.4.0",
+    "babel-eslint": "^8.0.3",
+    "babel-jest": "^24.9.0",
+    "babel-preset-gatsby-package": "^0.2.5",
     "cross-env": "^5.2.0",
-    "prop-types": "^15.6.2"
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.16.0",
+    "jest": "^24.9.0",
+    "prop-types": "^15.6.2",
+    "rimraf": "^3.0.2"
   },
-  "dependencies": {},
   "peerDependencies": {
     "react": "^16.8.5"
+  },
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "jest": {
+    "roots": [
+      "src"
+    ]
   }
 }

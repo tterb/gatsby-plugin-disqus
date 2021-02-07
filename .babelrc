@@ -1,11 +1,10 @@
 {
-  "presets": [
-    [
-      "babel-preset-gatsby-package",
-      {
-        "browser": true
-      }
-    ]
-  ],
-  "plugins": ["@babel/plugin-proposal-class-properties", "@babel/plugin-transform-spread"]
+    "presets": [
+        ["babel-preset-gatsby-package", { "browser": true }]
+    ],
+    "plugins": [
+        "@babel/plugin-transform-spread", 
+        ["@babel/plugin-proposal-private-methods", { "loose": false }]
+    ],
+    "ignore": ["src/__test__/"]
 }

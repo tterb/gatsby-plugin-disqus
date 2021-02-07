@@ -1,6 +1,4 @@
-'use strict'
-
-var didRunAlready = false;
+let didRunAlready = false;
 let shortname = '';
 
 exports.onPreInit = function(_ref, pluginOptions) {
@@ -12,13 +10,13 @@ exports.onPreInit = function(_ref, pluginOptions) {
         throw new Error('You can only have single instance of gatsby-plugin-disqus in your gatsby-config.js');
     }
     didRunAlready = true;
-}
+};
 
-exports.onCreateWebpackConfig = ({ plugins, actions, }) => {
-    var setWebpackConfig = actions.setWebpackConfig;
+exports.onCreateWebpackConfig = ({ plugins, actions }) => {
+    const setWebpackConfig = actions.setWebpackConfig;
     setWebpackConfig({
         plugins: [plugins.define({
             GATSBY_DISQUS_SHORTNAME: JSON.stringify(shortname),
         })],
     });
-}
+};
