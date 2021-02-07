@@ -34,7 +34,6 @@ export default class Disqus extends React.Component {
     getDisqusConfig() {
         const config = this.props.config;
         const callbacks = this.props.callbacks;
-        // const callbacks = this.getCallbacks();
         return function() {
             this.page.identifier = config.identifier;
             this.page.url = config.url;
@@ -90,7 +89,8 @@ export default class Disqus extends React.Component {
     }
 
     render() {
-        const { config, ...props } = this.props; // eslint-disable-line no-unused-vars
+        // eslint-disable-next-line no-unused-vars
+        const { config, ...props } = this.props;
         return (
             <div id='disqus_thread' {...props} />
         );
@@ -184,4 +184,4 @@ Disqus.propTypes = {
         onPaginate: PropTypes.func,
         preReset: PropTypes.func,
     }),
-}
+};
