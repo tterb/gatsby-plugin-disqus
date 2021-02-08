@@ -33,7 +33,7 @@ export default class Disqus extends React.Component {
 
     getDisqusConfig() {
         const config = this.props.config;
-        const callbacks = this.props.callbacks;
+        const callbacks = this.getDisqusCallbacks();
         return function() {
             this.page.identifier = config.identifier;
             this.page.url = config.url;
@@ -41,11 +41,21 @@ export default class Disqus extends React.Component {
             this.page.remote_auth_s3 = config.remoteAuthS3;
             this.page.api_key = config.apiKey;
             this.language = config.language;
-
-            CALLBACK_OPTIONS.forEach(key => {
-                this.callbacks[key] = [callbacks[key]];
-            });
+            this.callbacks = callbacks;
         };
+    }
+
+    getDisqusCallbacks() {
+        const callbacks = {};
+        const propCallbacks = this.props.callbacks;
+        if (propCallbacks && Object.keys(propCallbacks).length) {
+            CALLBACK_OPTIONS.forEach(key => {
+                if (key in propCallbacks) {
+                    callbacks[key] = [propCallbacks[key]];
+                }
+            });
+        }
+        return callbacks;
     }
 
     loadInstance() {
@@ -74,7 +84,7 @@ export default class Disqus extends React.Component {
         } catch (error) {
             window.DISQUS = undefined;
         }
-        const thread = window.document.getElementById('disqus_thread');
+        const thread = window.document.getElementById(EMBED_ID);
         if (thread) {
             while (thread.hasChildNodes()) {
                 thread.removeChild(thread.firstChild);
@@ -90,7 +100,7 @@ export default class Disqus extends React.Component {
 
     render() {
         // eslint-disable-next-line no-unused-vars
-        const { config, ...props } = this.props;
+        const { config, callbacks, ...props } = this.props;
         return (
             <div id='disqus_thread' {...props} />
         );
