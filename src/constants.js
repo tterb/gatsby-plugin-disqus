@@ -18,4 +18,4 @@ export {
     EMBED_ID,
     COMMENT_COUNT_ID,
     CALLBACK_OPTIONS,
-}
+};
