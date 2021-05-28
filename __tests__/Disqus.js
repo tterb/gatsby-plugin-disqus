@@ -1,10 +1,11 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-// Components
-import Disqus from '../src/components/Disqus.jsx';
+import Disqus from '../src/components/Disqus';
+import { EMBED_ID } from '../src/constants';
 
 
-const disqusConfig = {
+const TEST_ID = 'disqus-thread';
+const TEST_CONFIG = {
     url: 'https://joy-of-testing.com/',
     title: 'Joy of Testing',
     identifier: 'tester',
@@ -12,7 +13,7 @@ const disqusConfig = {
 
 const Component = (props) => (
     <Disqus
-        data-testid='disqus-thread'
+        data-testid={TEST_ID}
         {...props}
     />
 );
@@ -21,19 +22,19 @@ const Component = (props) => (
 afterEach(cleanup);
 
 test('Has correct attributes', () => {
-    const { getByTestId } = render(<Component config={disqusConfig} />);
+    const { getByTestId } = render(<Component config={TEST_CONFIG} />);
     // Check that the correct ID is added
-    expect(getByTestId('disqus-thread')).toHaveAttribute('id', 'disqus_thread');
+    expect(getByTestId(TEST_ID)).toHaveAttribute('id', 'disqus_thread');
 });
 
 test('Creates window.disqus_config', () => {
-    render(<Component config={disqusConfig} />);
+    render(<Component config={TEST_CONFIG} />);
     expect(global.window.disqus_config).toBeTruthy();
 });
 
 test('Inserts the script correctly', () => {
-    const { baseElement } = render(<Component config={disqusConfig} />);
-    const scriptQuery = baseElement.querySelectorAll('#dsq-embed-scr');
+    const { baseElement } = render(<Component config={TEST_CONFIG} />);
+    const scriptQuery = baseElement.querySelectorAll(`#${EMBED_ID}`);
     // Make sure only one script is inserted
     expect(scriptQuery.length).toEqual(1);
     // Check that the script src is set correctly
@@ -41,9 +42,9 @@ test('Inserts the script correctly', () => {
 });
 
 test('Cleans script and window attributes on unmount', () => {
-    const { baseElement, unmount } = render(<Component config={disqusConfig} />);
+    const { baseElement, unmount } = render(<Component config={TEST_CONFIG} />);
     unmount();
-    const scriptQuery = baseElement.querySelectorAll('#dsq-embed-scr');
+    const scriptQuery = baseElement.querySelectorAll(`#${EMBED_ID}`);
     // Make sure the script is removed
     expect(scriptQuery.length).toEqual(0);
     // Make sure window.DISQUS is removed
