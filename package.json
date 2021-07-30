@@ -51,7 +51,7 @@
     "rimraf": "^3.0.2"
   },
   "peerDependencies": {
-    "react": "^16.8.5"
+    "react": "^16.0.0 || ^17.0.0"
   },
   "standard": {
     "parser": "babel-eslint"
