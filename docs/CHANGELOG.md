@@ -1,5 +1,15 @@
 # Changelog  
 
+## Version 1.2.3  
+
+  * Added Typescript definition file
+  * Modified `CommentCount` to accept additional custom props
+  * Added test-suite and unit-tests for package components   
+  * Cleaned up package scripts and dependencies
+  * Updated `peerDependencies` to support React v17 
+
+--------------------------------  
+
 ## Version 1.2.2  
 
   * Modified `Disqus` component to better utilize `DISQUS.reset()`  
