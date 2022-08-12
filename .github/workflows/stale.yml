@@ -25,11 +25,11 @@ jobs:
             - enhancement
             - help wanted
             - confirmed
-            - "[WIP]"
+            - WIP
           stale-pr-label: ":ghost: stale"
           stale-pr-message: "This pull request has been automatically marked as stale because it appears to have gone quiet. It will be closed in 7 days if no further activity occurs. Thank you
           for your contributions."
           exempt-pr-labels:
             - pinned
             - enhancement
-            - "[WIP]"
+            - WIP
