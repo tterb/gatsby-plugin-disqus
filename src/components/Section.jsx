@@ -17,7 +17,8 @@ const SectionContainer = styled.div`
     border-bottom-color: transparent;
   }
   &.full {
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 1200px;
     padding: 5rem 7.5vw;
   }
   &.hero {

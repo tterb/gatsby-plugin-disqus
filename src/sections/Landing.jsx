@@ -12,7 +12,7 @@ import Comment from '../components/Logo/comments.svg'
 
 
 const Wrapper = styled.div`
-  ${tw`flex justify-start items-start flex-wrap w-auto ml-auto`}
+  ${tw`flex justify-start items-start flex-wrap gap-x-2 w-auto ml-auto mb-2`}
 `
 
 const Contents = styled.div`
@@ -23,7 +23,7 @@ const Contents = styled.div`
 `
 
 const Title = styled.h1`
-  ${tw`relative inline-block sm:text-4xl md:text-5xl lg:text-6xl font-sans font-bold tracking-normal leading-tight my-6 ml-3 sm:ml-0 z-99`}
+  ${tw`relative inline-block sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-sans font-bold tracking-normal leading-tight my-6 ml-3 sm:ml-0 z-99`}
   color: rgba(255,255,255,0.9);
   text-shadow: 0 2px 10px rgba(0,0,0,0.4);
 `

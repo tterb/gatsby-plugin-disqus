@@ -14,7 +14,6 @@ const HeaderContainer = styled(Headroom)`
   ${tw`absolute w-full z-99`};
   .headroom--pinned {
     background: ${props => props.theme.colors.primaryDark};
-    box-shadow: 0 1px 2px rgba(0,0,0,0.75);
   }
 `
 
