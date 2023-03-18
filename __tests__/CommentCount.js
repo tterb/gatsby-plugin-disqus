@@ -1,10 +1,11 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-// Components
-import CommentCount from '../src/components/CommentCount.jsx';
+import CommentCount from '../src/components/CommentCount';
+import { COMMENT_COUNT_ID } from '../src/constants';
 
 
-const disqusConfig = {
+const TEST_ID = 'comment-count';
+const TEST_CONFIG = {
     url: 'https://joy-of-testing.com/',
     title: 'Joy of Testing',
     identifier: 'tester',
@@ -12,7 +13,7 @@ const disqusConfig = {
 
 const Component = (props) => (
     <CommentCount
-        data-testid='comment-count'
+        data-testid={TEST_ID}
         {...props}
     />
 );
@@ -21,22 +22,22 @@ const Component = (props) => (
 afterEach(cleanup);
 
 test('Has correct config attributes', () => {
-    const { getByTestId } = render(<Component config={disqusConfig} />);
+    const { getByTestId } = render(<Component config={TEST_CONFIG} />);
     // Check that the url is set correctly
-    expect(getByTestId('comment-count')).toHaveAttribute('data-disqus-url', disqusConfig.url);
+    expect(getByTestId(TEST_ID)).toHaveAttribute('data-disqus-url', TEST_CONFIG.url);
     // Check that the identifier is set correctly
-    expect(getByTestId('comment-count')).toHaveAttribute('data-disqus-identifier', disqusConfig.identifier);
+    expect(getByTestId(TEST_ID)).toHaveAttribute('data-disqus-identifier', TEST_CONFIG.identifier);
 });
 
 test('Has correct classes', () => {
     const customClass = 'custom-class';
     const { getByTestId } = render(
         <Component
-            config={disqusConfig}
+            config={TEST_CONFIG}
             className={customClass}
         />
     );
-    const classList = getByTestId('comment-count').classList;
+    const classList = getByTestId(TEST_ID).classList;
     // Check for the default class
     expect(classList).toContain('disqus-comment-count');
     // Check that the custom class is added
@@ -47,16 +48,16 @@ test('Displays the correct placeholder text', () => {
     const customPlaceholder = 'hold my place';
     const { getByTestId } = render(
         <Component
-            config={disqusConfig}
+            config={TEST_CONFIG}
             placeholder={customPlaceholder}
         />
     );
-    expect(getByTestId('comment-count')).toHaveTextContent(customPlaceholder);
+    expect(getByTestId(TEST_ID)).toHaveTextContent(customPlaceholder);
 });
 
 test('Inserts the script correctly', () => {
-    const { baseElement } = render(<Component config={disqusConfig} />);
-    const scriptQuery = baseElement.querySelectorAll('#dsq-count-scr');
+    const { baseElement } = render(<Component config={TEST_CONFIG} />);
+    const scriptQuery = baseElement.querySelectorAll(`#${COMMENT_COUNT_ID}`);
     // Make sure only one script is inserted
     expect(scriptQuery.length).toEqual(1);
     // Check that the script src is set correctly
@@ -64,9 +65,9 @@ test('Inserts the script correctly', () => {
 });
 
 test('Cleans script and window attributes on unmount', () => {
-    const { baseElement, unmount } = render(<Component config={disqusConfig} />);
+    const { baseElement, unmount } = render(<Component config={TEST_CONFIG} />);
     unmount();
-    const scriptQuery = baseElement.querySelectorAll('#dsq-count-scr');
+    const scriptQuery = baseElement.querySelectorAll(`#${COMMENT_COUNT_ID}`);
     // Make sure the script is removed
     expect(scriptQuery.length).toEqual(0);
     // Make sure window.DISQUSWIDGETS is removed

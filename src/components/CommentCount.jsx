@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { insertScript, removeScript, debounce, shallowComparison } from '../utils';
+import { COMMENT_COUNT_ID } from '../constants';
 
 
 const queueResetCount = debounce(() => {
@@ -41,14 +42,14 @@ export default class CommentCount extends React.Component {
         } else {
             insertScript(
                 `https://${this.shortname}.disqus.com/count.js`,
-                'dsq-count-scr',
+                COMMENT_COUNT_ID,
                 window.document.body
             );
         }
     }
 
     cleanInstance() {
-        removeScript('dsq-count-scr', window.document.body);
+        removeScript(COMMENT_COUNT_ID, window.document.body);
         window.DISQUSWIDGETS = undefined;
     }
 
@@ -73,18 +74,18 @@ CommentCount.defaultProps = {
 };
 CommentCount.propTypes = {
     config: PropTypes.shape({
-        /*
+        /**
         * Tells the Disqus service how to identify the current page.
         * When the Disqus embed is loaded, the identifier is used to look up
         * the correct thread.
         */
         identifier: PropTypes.string,
-        /*
+        /**
         * Tells the Disqus service the title of the current page.
         * This is used when creating the thread on Disqus.
         */
         title: PropTypes.string,
-        /*
+        /**
         * Tells the Disqus service the URL of the current page.
         * This URL is used when a thread is created so that Disqus knows which
         * page a thread belongs to.
@@ -92,12 +93,12 @@ CommentCount.propTypes = {
         */
         url: PropTypes.string,
     }),
-    /*
+    /**
     * This is the text that will be used as a placeholder prior to
     * loading the response.
     */
     placeholder: PropTypes.string,
-    /*
+    /**
     * This allows users to pass a custom class to the comment-count component
     */
     className: PropTypes.string,

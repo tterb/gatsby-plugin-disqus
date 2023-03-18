@@ -37,7 +37,7 @@ CommentEmbed.defaultProps = {
     showParentComment: true,
 };
 CommentEmbed.propTypes = {
-    /*
+    /**
      * This is used to determine the comment that gets embeded.
      * The ID can be found in the Disqus moderation panel or as a `data-post-id`
      * attribute on the HTML element.
@@ -46,20 +46,20 @@ CommentEmbed.propTypes = {
         PropTypes.number,
         PropTypes.string,
     ]).isRequired,
-    /*
+    /**
      * Determines the width of the embedded comment container.
      */
     width: PropTypes.number,
-    /*
+    /**
      * Determines the height of the embedded comment container.
      */
     height: PropTypes.number,
-    /*
+    /**
      * Determines whether the embedded comment should include or omit media from
      * within the original comment.
      */
     showMedia: PropTypes.bool,
-    /*
+    /**
      * Determines whether the parent comment should be displayed for * nested comments.
      */
     showParentComment: PropTypes.bool,
