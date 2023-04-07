@@ -1,6 +1,8 @@
 {
   "name": "gatsby-plugin-disqus",
   "description": "A component for integrating Disqus comments in Gatsby.",
+  "author": "Brett Stevenson <bstevensondev@gmail.com> (https://brettstevenson.io)",
+  "license": "MIT",
   "version": "1.2.4",
   "repository": "https://github.com/tterb/gatsby-plugin-disqus",
   "homepage": "https://brettstevenson.io/gatsby-plugin-disqus",
@@ -16,8 +18,7 @@
     "comments"
   ],
   "main": "index.js",
-  "author": "Brett Stevenson <bstevensondev@gmail.com> (https://brettstevenson.io)",
-  "license": "MIT",
+  "types": "types/index.d.ts",
   "scripts": {
     "copy-files": "mkdir lib || true && cp .eslintrc README.md package.json lib",
     "clean": "rimraf lib",
