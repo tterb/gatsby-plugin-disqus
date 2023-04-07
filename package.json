@@ -3,7 +3,7 @@
   "description": "A component for integrating Disqus comments in Gatsby.",
   "author": "Brett Stevenson <bstevensondev@gmail.com> (https://brettstevenson.io)",
   "license": "MIT",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "repository": "https://github.com/tterb/gatsby-plugin-disqus",
   "homepage": "https://brettstevenson.io/gatsby-plugin-disqus",
   "bugs": {
