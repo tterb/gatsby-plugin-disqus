@@ -20,7 +20,7 @@
   "main": "index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "copy-files": "mkdir lib || true && cp .eslintrc README.md package.json lib",
+    "copy-files": "mkdir lib || true && cp -r .eslintrc README.md package.json types lib",
     "clean": "rimraf lib",
     "build": "yarn clean && yarn copy-files && babel src --out-dir lib --copy-files --ignore **/__tests__",
     "lint": "eslint --debug .",

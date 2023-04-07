@@ -127,4 +127,5 @@ Disqus.propTypes = {
         */
         apiKey: PropTypes.string,
     }),
+    className: PropTypes.string,
 };
