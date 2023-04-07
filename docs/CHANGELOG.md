@@ -1,5 +1,12 @@
 # Changelog  
 
+## Version 1.2.6  
+
+  * Updated Typescript definitions
+  * Fixed build to include Typescript definitions
+
+--------------------------------  
+
 ## Version 1.2.4  
 
   * Updated `peerDependencies` to support React v18
